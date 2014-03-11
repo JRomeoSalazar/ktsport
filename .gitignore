@@ -13,7 +13,6 @@ www/css/*
 www/js/*
 www/assets/compiled/*
 www/media/*
-www/cgi-bin/*
 
 bin/behat
 bin/doctrine*
@@ -23,3 +22,21 @@ bin/phpcrodm
 bin/phpcrodm.php
 bin/jackalope
 vendor/*
+
+www/cgi-bin/*
+archived/*
+ftp/*
+logs/*
+Maildir/*
+.backups
+.bash_history
+.bashrc
+.cache/*
+.gem/*
+.gemrc
+.gems/*
+.htaccess
+.profile
+archived/
+ftp
+logs/*
