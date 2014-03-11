@@ -1,0 +1,25 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block main %}
+<div class="page-header">
+    {{ 'sylius.registration.header'|trans }}
+</div>
+
+<form action="{{ path('fos_user_registration_register') }}" method="post" novalidate class="user-forms">
+    {% for field in form %}
+        {{ form_row(field) }}
+    {% endfor %}
+    <div class="row submit">
+        <div class="large-12 columns">
+            <button type="submit" class="button medium success radius right">
+                <i class="icon-user"></i> {{ 'sylius.form.registration.submit'|trans }}
+            </button>
+        </div>
+        <!--<div class="large-6 columns">
+            <div class="oauth">
+                {{ render(url('hwi_oauth_connect')) }}
+            </div>
+        </div>-->
+    </div>
+</form>
+{% endblock %}

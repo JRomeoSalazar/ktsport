@@ -1,0 +1,85 @@
+{# src/KTSport/WebBundle/Resources/views/Default/products.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Producto
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Product
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse product">
+		<div class="large-12 columns hide-for-small">
+			{% trans %}Cajas y rollos KTTape{% endtrans %}
+		</div>
+		<div class="large-12 columns hide-for-small">
+			<a href="{{ path( 'ktsport_products' , {'_locale': (app.request.locale) }) }}" class="small radius button">
+				KT TAPE PRO
+			</a>
+			<a href="{{ path( 'ktsport_original' , {'_locale': (app.request.locale) }) }}" class="small radius button">
+				KT TAPE
+			</a>
+		</div>
+		<div class="large-12 columns section-container tabs" data-section="tabs">
+			{% for button in buttons %}
+				<section {% if section == "faq" and loop.index == 3 %}class="active"{% endif %}>
+					<p class="title" data-section-title>
+						{% if section == "faq" and loop.first %}
+							<a class="desc" href="{{ path( 'ktsport_products' , {'_locale': (app.request.locale) }) }}" title="{{ button.title }}">
+								{{ button.title|upper }}
+							</a>
+						{% else %}
+							<a href="#" title="{{ button.title }}">{{ button.title|upper }}</a>
+						{% endif %}
+					</p>
+					<div class="content" data-section-content>
+						{% if loop.first %}
+							<div class="desc-content sw">
+								<ul>
+									{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'desc-content' })) }}
+								</ul>
+								{% if kt == "pro" %}
+									{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'pro' })) }}
+								{% elseif kt == "original" %}
+									{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'original' })) }}
+								{% endif %}
+							</div>
+						{% elseif loop.index == 2 %}
+							{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'box-content' })) }}
+						{% elseif loop.index == 3 %}
+							<div class="row collapse">
+								<div class="large-12 small-12 columns">
+									<h6 class="faq">{{ button.content|upper }}</h6>
+								</div>
+								{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'faq-content' })) }}
+							</div>
+						{% elseif loop.index == 4 %}
+							{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'support-content' })) }}
+						{% endif %}
+					</div>
+				</section>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% javascripts
+        output='js/products.js'
+        'bundles/syliusweb/js/products.js'
+     %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+	{% if section == "faq" %}
+		<script type="text/javascript">
+				$("a.desc").click(cargar);
+				function cargar () {
+					location.href = $(this).attr("href");
+				}
+		</script>
+	{% endif %}
+{% endblock %}

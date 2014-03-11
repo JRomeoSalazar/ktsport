@@ -1,0 +1,45 @@
+##
+# Dealer
+##
+ktsport_backend_dealer_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.dealer:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Dealer:index.html.twig
+
+ktsport_backend_dealer_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: ktsport.controller.dealer:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Dealer:create.html.twig
+            redirect: ktsport_backend_dealer_show
+
+ktsport_backend_dealer_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: ktsport.controller.dealer:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Dealer:update.html.twig
+            redirect: ktsport_backend_dealer_show
+
+ktsport_backend_dealer_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: ktsport.controller.dealer:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: ktsport_backend_dealer_index
+
+ktsport_backend_dealer_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.dealer:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Dealer:show.html.twig

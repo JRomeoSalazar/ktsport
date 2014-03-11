@@ -1,0 +1,54 @@
+{% macro descuentoPrototype(group) %}
+<div id="sylius_product_descuentos___name__" class="row">
+	<div class="col-lg-10">
+		<div class="form-group">
+			<label class="control-label col-lg-2 required" for="sylius_product_descuentos___name___group">{{ 'sylius.form.descuento.grupo'|trans }}</label>
+			<div class="col-lg-10">
+				{{ form_widget(group) }}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-lg-2 required" for="sylius_product_descuentos___name___porcentaje">{{ 'sylius.form.descuento.porcentaje'|trans }}</label>
+			<div class="col-lg-10">
+				<input type="number" id="sylius_product_descuentos___name___porcentaje" name="sylius_product[descuentos][__name__][porcentaje]" required="required" class="form-control" />
+			</div>
+		</div>
+	</div>
+    <div class="col-md-2">
+        <a href="#" class="btn btn-danger" data-collection-button="delete" data-id="sylius_product_descuentos___name__" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images"><i class="glyphicon glyphicon-trash"></i>&nbsp;{{ 'sylius.product.delete_descuento'|trans }}</a>
+    </div>
+</div>
+{% endmacro %}
+
+<div class="tab-pane" id="descuentos">
+   <div id="sylius_product_descuentos" class="collection-container" data-prototype="{{ _self.descuentoPrototype(form.descuentos.vars.prototype.group)|e }}">
+   		{% for descuentoForm in form.descuentos %}
+            <div id="{{ descuentoForm.vars.id }}" class="row">
+				<div class="col-lg-10">
+					<div class="form-group">
+						<label class="control-label col-lg-2 required" for="{{ descuentoForm.group.vars.id }}">
+							{{ descuentoForm.group.vars.label|trans }}
+						</label>
+						<div class="col-lg-10">
+							{{ form_widget(descuentoForm.group) }}
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-lg-2 required" for="{{ descuentoForm.porcentaje.vars.id }}">
+							{{ descuentoForm.porcentaje.vars.label|trans }}
+						</label>
+						<div class="col-lg-10">
+							{{ form_widget(descuentoForm.porcentaje) }}
+						</div>
+					</div>
+				</div>
+			    <div class="col-md-2">
+			        <a href="#" class="btn btn-danger" data-collection-button="delete" data-id="{{ descuentoForm.vars.id }}" data-prototype="sylius-assortment-product-images" data-collection="sylius-assortment-product-images"><i class="glyphicon glyphicon-trash"></i>&nbsp;{{ 'sylius.product.delete_descuento'|trans }}</a>
+			    </div>
+			</div>
+        {% endfor %}
+   </div>
+    <a href="#" class="btn btn-success btn-block" data-collection-button="add" data-prototype="sylius_product_descuentos" data-collection="sylius_product_descuentos">
+        {{ 'sylius.product.add_descuento'|trans }}
+    </a>
+</div>

@@ -1,0 +1,28 @@
+{% macro create() %}
+<div class="row submit">
+    <div class="large-12 columns">
+		<a href="{{ app.request.headers.get('referer') }}" class="button medium secondary radius right">
+			<i class="icon-remove"></i> {{ 'sylius.cancel'|trans }}
+		</a>
+        <button type="submit" class="button medium success radius right">
+        	<i class="icon-ok"></i> {{ 'sylius.create'|trans }}
+        </button>
+	</div>
+</div>
+</div>
+{% endmacro %}
+
+{% macro update() %}
+
+<div class="row submit">
+    <div class="large-12 columns">
+    	<a href="{{ app.request.headers.get('referer') }}" class="button medium secondary radius right">
+    		<i class="icon-remove"></i> {{ 'sylius.cancel'|trans }}
+    	</a>
+    	<button type="submit" class="button medium success radius right">
+        	<i class="icon-save"></i> {{ 'sylius.save_changes'|trans }}
+        </button>
+    </div>
+</div>
+{% endmacro %}
+-

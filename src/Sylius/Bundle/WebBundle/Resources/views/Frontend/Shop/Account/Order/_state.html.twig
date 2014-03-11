@@ -1,0 +1,22 @@
+{% set shipment = order.lastShipment %}
+{% if shipment %}
+
+	{% set day =  shipment.updatedAt|date('j') %}
+	{% set month =  ('sylius.account.order.shipment.date.' ~ shipment.updatedAt|date('F'))|trans %}
+	{% set year = shipment.updatedAt|date('Y') %}
+	{% set horas = shipment.updatedAt|date('H') %}
+	{% set minutos = shipment.updatedAt|date('i') %}
+
+	{% set fecha = day ~ ' de ' ~ month ~ ' del ' ~ year  ~ ' ' ~ horas ~ ':' ~ minutos %}
+
+    {{ ('sylius.account.order.shipment.' ~ shipment.state) |trans({'%at%': (fecha)}) }}
+
+    {% if shipment.tracking %}
+        <br>
+        {{ 'sylius.account.order.tracking_number'|trans}}
+        {{ shipment.tracking }}
+    {% endif %}
+    
+{% else %}
+    {{ 'sylius.account.order.placed_at'|trans({'%at%': order.createdAt|date}) }}
+{% endif %}

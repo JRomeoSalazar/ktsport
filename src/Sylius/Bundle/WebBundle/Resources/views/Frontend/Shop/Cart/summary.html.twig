@@ -1,0 +1,108 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% import 'SyliusWebBundle:Frontend/Shop/Macros:alerts.html.twig' as alerts %}
+
+{% form_theme form 'SyliusWebBundle:Frontend/Shop/Cart:fields.html.twig' %}
+
+{% block main %}
+<div class="page-header">
+{{ 'sylius.cart.summary_header'|trans|raw }}
+</div>
+
+{% if not cart.empty %}
+{{ form_errors(form) }}
+
+<form action="{{ path('sylius_cart_save') }}" method="post" novalidate>
+<table class="cart-summary">
+    <thead>
+        <tr>
+            <th class="id-col">#</th>
+            <th class="product-col">{{ 'sylius.cart.summary.product'|trans }}</th>
+            <th class="quantity-col">{{ 'sylius.cart.summary.quantity'|trans }}</th>
+            <th class="delete-col"></th>
+            <th class="price-col">{{ 'sylius.cart.summary.unit_price'|trans }}</th>
+            <th  class="total-col" style="text-align: right;">{{ 'sylius.cart.summary.total'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart.items %}
+            {% include 'SyliusWebBundle:Frontend/Shop/Cart:_item.html.twig' %}
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        {% if cart.promotionTotal %}
+        <tr>
+            <td colspan="6" style="text-align: right;">
+                <strong>{{ 'sylius.order.promotion_total'|trans }}</strong>: {{ cart.promotionTotal|sylius_price }}
+            </td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td colspan="6" style="text-align: right;">
+                <strong>{{ 'sylius.order.shipping_total'|trans }}</strong>: {{ cart.shippingTotal|sylius_price }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><strong>{{ 'sylius.order.taxes'|trans }}</strong></p>
+                <ul class="no-bullet">
+                {% for taxAdjustment in cart.taxAdjustments %}
+                    <li>{{ taxAdjustment.description }} {{ taxAdjustment.amount|sylius_price }} </li>
+                {% else %}
+                    <li><span class="label info">{{ 'sylius.order.no_taxes'|trans }}</span></li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td colspan="3" style="text-align: right;">
+                <strong>{{ 'sylius.order.tax_total'|trans }}</strong>: {{ cart.taxTotal|sylius_price }}
+            </td>
+        </tr>
+        {% if order.descuentoAdjustments|length > 0 %}
+            <tr>
+                <td colspan="3">
+                    <p><strong>{{ 'sylius.order.descuentos'|trans }}</strong></p>
+                    <ul class="no-bullet">
+                    {% for descuentoAdjustment in cart.descuentoAdjustments %}
+                        <li>{{ descuentoAdjustment.description }} {{ descuentoAdjustment.amount|sylius_price }} </li>
+                    {% else %}
+                        <li><span class="label info">{{ 'sylius.order.no_descuentos'|trans }}</span></li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td colspan="3" style="text-align: right;">
+                    <strong>{{ 'sylius.order.descuento_total'|trans }}</strong>: {{ cart.descuentoTotal|sylius_price }}
+                </td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td colspan="6" style="text-align: right;">
+                <strong>{{ 'sylius.cart.summary.grand_total'|trans }}</strong>: {{ cart.total|sylius_price }}
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="panel summary">
+    {{ form_row(form.promotionCoupon) }}
+    <button type="submit" class="button secondary medium radius">{{ 'sylius.cart.summary.add_coupon'|trans }}</button>
+</div>
+
+{{ form_rest(form) }}
+<div class="well">
+    <button type="submit" class="button info radius"><i class="icon-save"></i> {{ 'sylius.cart.summary.save'|trans }}</button>
+    <div class="pull-right">
+    <a href="{{ path('sylius_checkout_start') }}" class="button radius success"><i class="icon-shopping-cart"></i> {{ 'sylius.cart.summary.checkout'|trans }}</a>
+    <a href="{{ path('sylius_cart_clear') }}" class="button radius alert"><i class="icon-remove"></i> {{ 'sylius.cart.summary.clear'|trans }}</a>
+    </div>
+</div>
+</form>
+{% else %}
+    {{ alerts.info('sylius.cart.empty'|trans) }}
+{% endif %}
+
+{% endblock %}
+
+{% block sylius_cart_item_row %}
+{{ parent() }}
+{% block form_message %}{% endblock %}
+{% endblock %}

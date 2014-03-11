@@ -1,0 +1,80 @@
+{# src/KTSport/WebBundle/Resources/views/Default/subbutton.html.twig #}
+
+<!-- ************ SUBBOTÓN MOSTRADO COMO LISTA *************** -->
+{% for subbutton in subbuttons %}
+	{% if tag == 'li' %}
+		<li>
+			<a href="{{ path( (subbutton.url) , {'_locale': (app.request.locale), 'id': (subbutton.id) }) }}" title="{{ subbutton.title }}">
+				{{ subbutton.title }}
+			</a>
+		</li>
+	{% elseif tag == 'desc-content' %}
+		{% if loop.first %}
+			<li tab="tab{{ loop.index }}" class="first current">
+				<h6>{{ subbutton.title|upper }}</h6>
+				<div class="vertical-tab-content">
+					{{ subbutton.content|raw }}
+				</div>
+			</li>
+		{% elseif loop.last %}
+			<li tab="tab{{ loop.index }}" class="last">
+				<h6>{{ subbutton.title|upper }}</h6>
+				<div class="vertical-tab-content">
+					{{ subbutton.content|raw }}
+				</div>
+			</li>
+		{% else %}
+			<li tab="tab{{ loop.index }}">
+				<h6>{{ subbutton.title|upper }}</h6>
+				<div class="vertical-tab-content">
+					{{ subbutton.content|raw }}
+				</div>
+			</li>
+		{% endif %}
+	{% elseif tag == 'pro' %}
+		<div class="tab-content" style="background-image:url({{ asset('bundles/syliusweb/images/bg/') }}{{ subbutton.image }});">
+			{{ subbutton.content|raw }}
+		</div>
+	{% elseif tag == 'original' %}
+		<div class="tab-content original" style="background-image:url({{ asset('bundles/syliusweb/images/bg/') }}{{ subbutton.image }});">
+			{{ subbutton.content|raw }}
+		</div>
+	{% elseif tag == 'box-content' %}
+		{% if loop.index in [1, 2]  %}
+			<div class="box-content-col" style="background-image:url({{ asset('bundles/syliusweb/images/bg/') }}{{ subbutton.image }});">
+				{{ subbutton.title|upper }}
+			</div>
+		{% else %}
+			<div class="box-content-col">
+				<h6>{{ subbutton.title|upper }}</h6>
+				{{ subbutton.content|raw }}
+			</div>
+		{% endif %}
+	{% elseif tag == 'faq-content' %}
+		<div class="large-6 columns small-12 columns faq-content-col">
+			{{ subbutton.content|raw }}
+		</div>
+	{% elseif tag == 'support-content' %}
+		{% if loop.index == 1 %}
+			<h6>{{ subbutton.title|upper }}</h6>
+			<p>{{ subbutton.content }}</p>
+		{% elseif loop.index in [2, 3] %}
+			<div class="support-content-col">
+				{{ subbutton.content|raw }}
+			</div>
+		{% endif %}
+	{% elseif tag == 'pdf' %}
+		<tr>
+            <td>
+            	{{ subbutton.title|upper }}
+            </td>
+            <td>
+            	{% if subbutton.pdf is not null %}
+	            	<a href="{{ asset('bundles/syliusweb/pdf/') }}{{ subbutton.pdf }}" title="Instrucción {{ subbutton.title }}" target="_blank">
+	            		<img src="{{ asset('bundles/syliusweb/images/icons/pdficon.png') }}" alt="PDF Icon" />
+	            	</a>
+	            {% endif %}
+            </td>
+		</tr>
+	{% endif %}
+{% endfor %}

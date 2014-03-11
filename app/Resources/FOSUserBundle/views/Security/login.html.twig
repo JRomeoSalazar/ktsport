@@ -1,0 +1,49 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block main %}
+<div class="page-header">
+    {{ 'sylius.form.login.header'|trans }}
+</div>
+
+{% if error %}
+    <div class="alert-box alert">
+        {{ error|trans }}
+    </div>
+{% endif %}
+
+<form action="{{ path('fos_user_security_check') }}" method="post" class="user-forms">
+    <div class="row">
+        <div class="large-4 columns">
+            <label for="username" class="control-label">Email</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-4 columns">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" id="password" name="_password" required="required" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-2 columns">
+            <label for="remember_me">{{ 'sylius.form.login.remember_me'|trans }}</label>
+        </div>
+        <div class="large-10 columns">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        </div>
+    </div>
+    <div class="row submit">
+        <div class="large-6 columns">
+            <button type="submit" class="button medium radius" name="login">
+                <i class="icon-lock"></i> {{ 'sylius.form.login.header'|trans }}
+            </button>
+        </div>
+        {#<div class="large-6 columns">
+            <div class="oauth">
+                {{ render(url('hwi_oauth_connect')) }}
+            </div>
+        </div>#}
+    </div>
+</form>
+
+{% endblock %}

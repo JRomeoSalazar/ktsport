@@ -1,0 +1,33 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% import 'SyliusWebBundle:Frontend/Shop/Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Frontend/Shop/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Frontend/Shop/Product:macros.html.twig' import grid, list %}
+
+{% block main %}
+<div class="products">
+
+	<div class="page-header">
+	    {{ taxon }}
+	</div>
+
+	<div class="view">
+		<a href="{{ path('sylius_product_index_by_taxon', {'permalink': permalink, 'view': 'grid'}) }}">
+			<i class="icon-th"></i>
+		</a>
+		<a  href="{{ path('sylius_product_index_by_taxon', {'permalink': permalink, 'view': 'list'}) }}">
+			<i class="icon-list"></i>
+		</a>
+	</div>
+
+	{{ pagination(products) }}
+	{% if view == 'grid' %}
+		{{ grid(products) }}
+	{% else %}
+		{{ list(products) }}
+	{% endif %}
+	{{ pagination(products) }}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Event/index.html.twig #}
+<h1>Listado de Eventos</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Evento</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.id }}</td>
+            <td>{{ event.date|date("d.m.Y") }}</td>
+            <td>{{ event.title }}</td>
+            <td>{{ event.city|upper }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

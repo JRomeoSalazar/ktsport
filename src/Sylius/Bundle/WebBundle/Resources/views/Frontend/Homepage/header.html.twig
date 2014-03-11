@@ -1,0 +1,100 @@
+{# src/KTSport/WebBundle/Resources/views/Default/header.html.twig #}
+
+<!-- ************ CABECERA DE PÁGINA *************** -->
+<div class="row collapse topbar-search">
+	<div class="large-3 small-3 columns countries">
+		{% if url == 'kt_sport_web_faq' %}
+			{% set current_url = 'ktsport_products' %}
+		{% else %}
+			{% set current_url = url %}
+		{% endif %}
+		<a href="{{ path(current_url, route_params|merge({'_locale' : 'es'})) }}" class="bandera spain" title="idioma Español">
+			Español
+		</a>
+		<a href="{{ path(current_url, route_params|merge({'_locale' : 'en'})) }}" class="bandera uk" title="language English">
+			English
+		</a>
+	</div>
+	<div class="large-4 small-9 columns socials">
+		{% if is_granted('ROLE_SYLIUS_ADMIN') %}
+			<a class="account admin" href="{{ path('sylius_backend_dashboard') }}" title="{{ 'sylius.admin'|trans }}">
+				<i class="icon-briefcase"></i> {{ 'sylius.admin'|trans }}
+			</a>
+		{% endif %}
+		{% if is_granted('ROLE_USER') %}
+			<a class="account" href="{{ path('sylius_account_homepage') }}" title="{{ 'sylius.account.self'|trans }}">
+				<i class="icon-user"></i> {{ 'sylius.account.self'|trans }}
+			</a>
+		{% else %}
+			<a class="account" href="{{ path('fos_user_security_login') }}" title="{{ 'sylius.account.login'|trans }}">
+				<i class="icon-lock"></i> {{ 'sylius.account.login'|trans }}
+			</a>
+		{% endif %}
+		<a href="http://www.facebook.com/KTSPORT.ES" class="fc-webicon facebook" target="_blank" title="Síguenos en Facebook">Síguenos en Facebook</a>
+		<a href="http://twitter.com/ktsportes" class="fc-webicon twitter" target="_blank" title="Síguenos en Twitter">Síguenos en Twitter</a>
+		<a href="http://es.linkedin.com/in/ktsportes" class="fc-webicon linkedin" target="_blank" title="Síguenos en LinkedIn">Síguenos en LinkedIn</a>
+		<a href="http://www.youtube.com/user/KTSPORTES" class="fc-webicon youtube" target="_blank" title="Síguenos en YouTube">Síguenos en YouTube</a>
+	</div>
+	<div class="large-5 columns">
+		<div class="row collapse">
+			<form class="form-buscar" method='GET' target='blank' action="http://www.google.com/search">
+				<div class="large-8 small-8 columns small-left-pad">
+					<input type="text" name='q' class="input-buscar" placeholder="Buscar...">
+				</div>
+				<div class="large-4 small-4 columns small-right-pad">
+					<input type=hidden name='ie' value='UTF-8'>  
+					<input type=hidden name='oe' value='UTF-8'>
+					<input type='hidden' name='sitesearch' value='http://www.ktsport.es'>
+					<input type="submit" class="boton-buscar prefix" value="BUSCAR">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row collapse">
+	<div class="large-12 columns bar-top-menu">
+		<nav class="top-bar">
+			<ul class="title-area">
+				<!-- Title Area -->
+				<li class="name">
+				<h1><a href="#" title="KTTape Logo"><img src="{{ asset('bundles/syliusweb/images/web/kttape-logo.png') }}" alt="KTTape Logo" /></a></h1>
+				</li>
+				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+				<li class="toggle-topbar menu-icon"><a href="#" title="Menu"><span>Menu</span></a></li>
+			</ul>
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+					{% for button in buttons %}
+						{% if loop.last %}
+							<li class="{% if url == 'kt_sport_web_faq' %}active{% endif %}">
+								<a class="topbar-last-a" href="{{ path( (button.url) , {'_locale': (app.request.locale), 'section': 'faq' }) }}" title="{{ button.title }}">
+									{{ button.title|upper }}
+								</a>
+							</li>
+						{% else %}
+							<li class="{% if url == button.url %}active{% endif %}">
+								{% if button.id == 4 %}
+									<a href="{{ path( (button.url) , {'_locale': (app.request.locale), 'section': 'products' }) }}" title="{{ button.title }}">
+										{{ button.title|upper }}
+									</a>
+								{% else %}
+									<a href="{{ path( (button.url) , {'_locale': (app.request.locale) }) }}" title="{{ button.title }}">
+										{{ button.title|upper }}
+									</a>
+								{% endif %}
+							</li>
+							<li class="divider"></li>
+						{% endif %}
+					{% endfor %}
+					<li class="has-form">
+						<a class="button radius boton-comprar" href="{{ path( 'sylius_homepage' , {'_locale': (app.request.locale)}) }}" title="Comprar">
+							{% trans %}COMPRAR{% endtrans %}
+						</a>
+					</li>
+				</ul>
+			</section>
+		</nav>
+	</div>  
+</div>

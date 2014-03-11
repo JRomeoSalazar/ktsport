@@ -1,0 +1,64 @@
+{% macro btn(url, message, id, icon, class) %}
+<a class="button radius {% if class is not empty %} {{ class }}{% endif %}"
+    {% if id is not empty %} id="{{ id }}"{% endif %}
+    href="{{ url }}">
+    {% if icon is not empty %}
+        <i class="icon-{{ icon }}"></i>
+    {% endif %}
+    {{ message|trans }}
+</a>
+{% endmacro %}
+
+{% macro show(url, message, id, class) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'sylius.show'|trans %}
+    {% endif %}
+
+    {{ buttons.btn(url, message, id, 'book', 'info small') }}
+{% endmacro %}
+
+{% macro create(url, message, id) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'sylius.create'|trans %}
+    {% endif %}
+
+    {{ buttons.btn(url, message, id, 'plus-sign', 'secondary') }}
+{% endmacro %}
+
+{% macro edit(url, message, id) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'sylius.edit'|trans %}
+    {% endif %}
+
+    {{ buttons.btn(url, message, id, 'pencil', 'secondary') }}
+{% endmacro %}
+
+{% macro delete(url, message, disabled) %}
+{% if disabled %}
+<span class="button radius alert disabled">
+    <i class="icon-trash"></i><span>{{ message is empty ? 'sylius.delete'|trans : message }}</span>
+</span>
+{% else %}
+<form action="{{ url }}" method="post" style="display: inline;">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="confirmed" value="1">
+    <button
+        class="button radius alert"
+        type="submit"
+        data-confirm='{
+            "ok": "{{ 'sylius.confirmation.ok'|trans }}",
+            "cancel": "{{ 'sylius.confirmation.cancel'|trans }}",
+            "title": "{{ 'sylius.confirmation.title'|trans }}",
+            "body": "{{ 'sylius.confirmation.message'|trans }}"
+    }'>
+        <i class="icon-trash"></i> <span>{{ message is empty ? 'sylius.delete'|trans : message }}</span>
+    </button>
+</form>
+{% endif %}
+{% endmacro %}

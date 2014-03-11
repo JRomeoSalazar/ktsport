@@ -1,0 +1,7 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Bar/create.html.twig #}
+<form action="{{ path('ktsport_backend_bar_update', {'id': bar.id}) }}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+	{{ form_errors(form) }}
+	{{ form_widget(form) }}
+	<input type="submit" />
+</form>

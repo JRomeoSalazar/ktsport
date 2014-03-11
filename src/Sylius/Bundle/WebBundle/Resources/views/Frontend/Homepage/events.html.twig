@@ -1,0 +1,47 @@
+{# src/KTSport/WebBundle/Resources/views/Default/events.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Eventos
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Events
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse events">
+		<div class="large-12 small-12 columns">
+			<h2>{{ button.title|upper }}</h2>
+			<p>{{ button.content }}</p>
+			{% for year in "now"|date('Y')..2012 %}
+				{% if year == "now"|date('Y') %}
+					<h4>{% trans %}Previsión de eventos para el año %year%{% endtrans %}</h4>
+				{% else %}
+					<h4>{% trans %}Eventos del año %year%{% endtrans %}</h4>
+				{% endif %}
+				<table>
+					<thead>
+						<tr>
+							<th>FECHA</th>
+							<th>EVENTO</th>
+							<th>CIUDAD</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for event in events %}
+							{% if event.date|date("Y") == year %}
+								<tr>
+									<td>{{ event.date|date("d.m.Y") }}</td>
+						            <td>{{ event.title }}</td>
+						            <td>{{ event.city|upper }}</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

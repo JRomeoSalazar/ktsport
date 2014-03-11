@@ -1,0 +1,44 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Shop/layout.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% set settings = sylius_settings_all('general') %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Tienda
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Shop
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+	<div class="row shop">
+        <div class="large-12 columns header">
+            {% block header %}
+                {{ knp_menu_render('sylius.frontend.main', {'template': 'SyliusWebBundle:Frontend/Shop:menu.html.twig'}) }}
+            {% endblock %}
+        </div>
+	</div>
+    <div class="row shop">
+        <div class="large-3 columns sidebar">
+            {% block sidebar %}
+                {{ knp_menu_render('sylius.frontend.taxonomies', {'template': 'SyliusWebBundle:Frontend/Shop:menu.html.twig'}) }}
+            {% endblock %}
+        </div>
+        <div class="large-9 columns">
+
+            {% block flashes %}
+            {% for name, flashes in app.session.flashbag.all if name in ['success', 'error', 'notice', 'fos_user_success'] %}
+                {% for flash in flashes %}
+                    <div data-alert class="alert-box {{ name == 'fos_user_success' ? 'success' : name == 'error' ? 'alert' : name == 'notice' ? 'warning' : name == 'success' ? 'success' }}">
+                        <a class="close" href="#">×</a>
+                        {{ flash|trans }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% endblock %}
+
+            {% block main %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

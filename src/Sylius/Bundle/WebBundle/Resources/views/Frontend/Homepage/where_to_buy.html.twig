@@ -1,0 +1,45 @@
+{# src/KTSport/WebBundle/Resources/views/Default/index.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Dónde Comprar
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Where to buy
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse dealers">
+		<div class="large-12 small-12 columns">
+			<h2>{% trans %}DÓNDE COMPRAR{% endtrans %}</h2>
+		</div>
+	</div>
+	<div class="row collapse dealers map">
+	{% for dealer in dealers %}
+		<div class="large-4 small-4 columns">
+			<ul class="no-bullet">
+				<li>
+					<h6>{{ dealer.zone|upper }}</h6>
+				</li>
+				<li>
+					<strong>{{ dealer.title|upper }}</strong>
+				</li>
+				<li>
+					<i class="icon-fixed-width icon-large icon-phone"></i>
+					{{ dealer.phone }}
+				</li>
+				<li>
+					<i class="icon-fixed-width icon-large icon-envelope-alt"></i>
+					<a href="mailto:{{ dealer.mail }}" title="mailto:{{ dealer.mail }}">{{ dealer.mail }}</a>
+				</li>
+				<li>
+					<i class="icon-fixed-width icon-large icon-home"></i>
+					<a href="{{ dealer.url }}" title="{{ dealer.url }}">{{ dealer.url }}</a>
+				</li>
+			</ul>
+		</div>
+	{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dealer/update.html.twig #}
+<form action="{{ path('ktsport_backend_dealer_update', {'id': dealer.id}) }}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+	{{ form_errors(form) }}
+	{{ form_widget(form) }}
+	<input type="submit" />
+</form>

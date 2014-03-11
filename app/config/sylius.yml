@@ -1,0 +1,168 @@
+sylius_core:
+    driver: doctrine/orm
+    emails:
+        enabled: true
+        from_email:
+            address: admin@ktsport.es
+            sender_name: KTSport Admin
+        order_confirmation:
+            enabled: true
+            template: 'SyliusWebBundle:Frontend/Shop/Email:orderConfirmation.html.twig'
+            from_email:
+                address: orders@ktsport.es
+                sender_name: KTSport Orders
+        #customer_welcome:
+        #    enabled: false
+        #    template: 'SyliusWebBundle:Frontend/Shop/Email:customerWelcome.html.twig'
+        #    from_email:
+        #        address:
+        #        sender_name:
+
+sylius_installer:
+    classes:
+        user:
+            model: Sylius\Bundle\CoreBundle\Model\User
+
+sylius_money:
+    currency: %sylius.currency%
+    locale: %sylius.locale%
+
+sylius_cart:
+    resolver: sylius.cart_item_resolver.default
+    classes:
+        item:
+            form: Sylius\Bundle\CoreBundle\Form\Type\CartItemType
+        cart:
+            form: Sylius\Bundle\CoreBundle\Form\Type\CartType
+
+sylius_settings: ~
+
+sylius_taxonomies:
+    classes:
+        taxonomy:
+            model: Sylius\Bundle\CoreBundle\Model\Taxonomy
+            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonomyType
+        taxon:
+            model: Sylius\Bundle\CoreBundle\Model\Taxon
+            form: Sylius\Bundle\CoreBundle\Form\Type\TaxonType
+
+sylius_product:
+    classes:
+        product:
+            model: Sylius\Bundle\CoreBundle\Model\Product
+            controller: Sylius\Bundle\CoreBundle\Controller\ProductController
+            repository: Sylius\Bundle\CoreBundle\Repository\ProductRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\ProductType
+
+sylius_variable_product:
+    classes:
+        variant:
+            model: Sylius\Bundle\CoreBundle\Model\Variant
+            repository: Sylius\Bundle\CoreBundle\Repository\VariantRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\VariantType
+
+sylius_taxation:
+    classes:
+        tax_rate:
+            model: Sylius\Bundle\CoreBundle\Model\TaxRate
+            form: Sylius\Bundle\CoreBundle\Form\Type\TaxRateType
+
+sylius_shipping:
+    classes:
+        shipment:
+            model: Sylius\Bundle\CoreBundle\Model\Shipment
+            repository: Sylius\Bundle\CoreBundle\Repository\ShipmentRepository
+        shipment_item:
+            model: Sylius\Bundle\CoreBundle\Model\InventoryUnit
+        shipping_method:
+            model: Sylius\Bundle\CoreBundle\Model\ShippingMethod
+            form: Sylius\Bundle\CoreBundle\Form\Type\ShippingMethodType
+
+sylius_promotions:
+    classes:
+        promotion_subject:
+            model: %sylius.model.order.class%
+
+sylius_inventory:
+    backorders: %sylius.inventory.backorders_enabled%
+    classes:
+        unit:
+            model: Sylius\Bundle\CoreBundle\Model\InventoryUnit
+        stockable:
+            model: %sylius.model.variant.class%
+
+sylius_payments:
+    gateways:
+        dummy: Manual
+        paypal_express_checkout: PayPal Express
+        contrareembolso: Contra Reembolso
+        transferencia: Transferencia Bancaria
+
+sylius_payum: ~
+
+sylius_addressing:
+    classes:
+        address:
+            controller: Sylius\Bundle\WebBundle\Controller\Frontend\Shop\Account\AddressController
+
+sylius_order:
+    classes:
+        order:
+            model: Sylius\Bundle\CoreBundle\Model\Order
+            controller: Sylius\Bundle\CoreBundle\Controller\OrderController
+            repository: Sylius\Bundle\CoreBundle\Repository\OrderRepository
+            form: Sylius\Bundle\CoreBundle\Form\Type\OrderType
+        order_item:
+            model: Sylius\Bundle\CoreBundle\Model\OrderItem
+
+sylius_resource:
+    resources:
+        sylius.user:
+            driver: doctrine/orm
+            classes:
+                model: Sylius\Bundle\CoreBundle\Model\User
+                controller: Sylius\Bundle\CoreBundle\Controller\UserController
+                repository: Sylius\Bundle\CoreBundle\Repository\UserRepository
+        sylius.group:
+            driver: doctrine/orm
+            classes:
+                model: Sylius\Bundle\CoreBundle\Model\Group
+        sylius.locale:
+            driver: doctrine/orm
+            classes:
+                model: Sylius\Bundle\CoreBundle\Model\Locale
+                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+        sylius.block:
+            driver: doctrine/phpcr-odm
+            classes:
+                model: Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock
+        sylius.page:
+            driver: doctrine/phpcr-odm
+            classes:
+                model: Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent
+                repository: Sylius\Bundle\CoreBundle\Repository\PageRepository
+        ktsport.bar:
+            driver: doctrine/orm
+            classes:
+                model: KTSport\WebBundle\Entity\Bars
+                repository: KTSport\WebBundle\Entity\BarsRepository
+        ktsport.button:
+            driver: doctrine/orm
+            classes:
+                model: KTSport\WebBundle\Entity\Buttons
+                repository: KTSport\WebBundle\Entity\ButtonsRepository
+        ktsport.dealer:
+            driver: doctrine/orm
+            classes:
+                model: KTSport\WebBundle\Entity\Dealers
+                repository: KTSport\WebBundle\Entity\DealersRepository
+        ktsport.event:
+            driver: doctrine/orm
+            classes:
+                model: KTSport\WebBundle\Entity\Events
+                repository: KTSport\WebBundle\Entity\EventsRepository
+        ktsport.subbutton:
+            driver: doctrine/orm
+            classes:
+                model: KTSport\WebBundle\Entity\SubButtons
+                repository: KTSport\WebBundle\Entity\SubButtonsRepository

@@ -1,0 +1,45 @@
+##
+# Event
+##
+ktsport_backend_event_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.event:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Event:index.html.twig
+
+ktsport_backend_event_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: ktsport.controller.event:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Event:create.html.twig
+            redirect: ktsport_backend_event_show
+
+ktsport_backend_event_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: ktsport.controller.event:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Event:update.html.twig
+            redirect: ktsport_backend_event_show
+
+ktsport_backend_event_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: ktsport.controller.event:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: ktsport_backend_event_index
+
+ktsport_backend_event_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.event:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Event:show.html.twig

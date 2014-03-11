@@ -1,0 +1,23 @@
+{% import 'SyliusWebBundle:Frontend/Shop/Macros:buttons.html.twig' as buttons %}
+{% extends 'SyliusWebBundle:Frontend/Shop/Account:layout.html.twig' %}
+
+{% block main %}
+    <h4 class="title">{{ 'sylius.account.order.details'|trans }}</h4>
+
+    {% include "SyliusWebBundle:Frontend/Shop/Account:Order/_detail.html.twig" %}
+
+    {% if order.isInvoiceAvailable %}
+    {{ buttons.btn(
+        path('sylius_account_order_invoice', {'number': order.number}),
+        'sylius.account.order.download_invoice',
+        'order-' ~ order.number ~ '-invoice',
+        'file'
+    ) }}
+    {% endif %}
+
+    <div>
+        <a href="{{ path('sylius_account_order_index') }}" class="button medium radius right">
+            <i class="icon-chevron-left"></i> {{ 'sylius.breadcrumb.order.index'|trans }}
+        </a>
+    </div>
+{% endblock %}

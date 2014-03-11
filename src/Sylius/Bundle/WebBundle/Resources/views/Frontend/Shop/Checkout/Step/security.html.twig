@@ -1,0 +1,60 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% form_theme registration_form 'SyliusWebBundle:Frontend:forms.html.twig' %}
+
+{% block main %}
+<div class="page-header" style="font-size: 1em;">
+    {{ 'sylius.checkout.security.header'|trans|raw }}
+</div>
+
+{% include 'SyliusWebBundle:Frontend/Shop/Checkout:_progressBar.html.twig' %}
+
+<div class="row">
+    <div class="large-12 columns panel checkout-existing-customer">
+        <form action="{{ path('fos_user_security_check') }}" method="post">
+            <h4 class="title">{{ 'sylius.checkout.security.existing_customer'|trans|upper }}</h4>
+            <div class="row form-group">
+                <div class="large-3 columns">
+                    <label for="username" class="control-label right">{{ 'sylius.form.login.email'|trans }}</label>
+                </div>
+                <div class="controls large-9 columns">
+                    <input type="text" id="username" name="_username" class="form-control" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="large-3 columns">
+                    <label for="password" class="control-label right">{{ 'sylius.form.login.password'|trans }}</label>
+                </div>
+                <div class="controls large-9 columns">
+                    <input type="password" id="password" name="_password" class="form-control" />
+                </div>
+            </div>
+            {#<div class="form-actions">
+                <input type="submit" class="btn btn-primary btn-block" name="login" value="{{ 'sylius.checkout.security.login'|trans }}" />
+            </div>#}
+            <div class="form-actions">
+                <button type="submit" class="medium success radius right" name="login" style="margin: 0px;">
+                    <i class="icon-lock icon-large"></i> {{ 'sylius.checkout.security.login'|trans }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns panel checkout-new-customer">
+        <form action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" method="post" novalidate>
+            <h4 class="title">{{ 'sylius.checkout.security.new_customer'|trans|upper }}</h4>
+            {{ form_widget(registration_form) }}
+            {#<div class="form-actions">
+                <input type="submit" class="btn btn-success btn-block" value="{{ 'sylius.checkout.security.register'|trans }}" />
+            </div>#}
+            <div class="form-actions">
+                <button type="submit" class="medium info radius right" style="margin: 0px;">
+                    <i class="icon-user icon-large"></i> {{ 'sylius.checkout.security.register'|trans }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

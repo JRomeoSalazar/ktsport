@@ -1,0 +1,49 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts output='assets/compiled/frontend_province.js'
+    'bundles/syliusweb/js/province-choices.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block main %}
+<div class="page-header">
+    {{ 'sylius.checkout.addressing.header'|trans|raw }}
+</div>
+
+{% include 'SyliusWebBundle:Frontend/Shop/Checkout:_progressBar.html.twig' %}
+
+{% form_theme form 'SyliusWebBundle:Frontend/Shop/Cart:fields.html.twig' %}
+
+<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate>
+
+{{ form_errors(form) }}
+
+<div class="row">
+    <div class="large-6 columns address-container">
+        <div class="panel summary">
+            <h4 class="title">{{ 'sylius.checkout.finalize.order.shipping_address'|trans }}</h4>
+            {% include 'SyliusWebBundle:Frontend/Shop/Address:_form.html.twig' with {'form': form.shippingAddress} %}
+            {{ form_row(form.differentBillingAddress, {'attr': {'class': 'sylius-different-billing-address-trigger'}}) }}
+        </div>
+    </div>
+    <div class="large-6 columns hidden address-container" style="display: hidden;" id="sylius-billing-address-container">
+        <div class="panel summary">
+            <h4 class="title">{{ 'sylius.checkout.finalize.order.billing_address'|trans }}</h4>
+            {% include 'SyliusWebBundle:Frontend/Shop/Address:_form.html.twig' with {'form': form.billingAddress} %}
+        </div>
+    </div>
+</div>
+
+{{ form_widget(form._token) }}
+
+<div class="form-actions">
+    <a href="{{ path('sylius_cart_summary') }}" class="button medium secondary radius"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
+    <button type="submit" class="medium info radius">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
+</div>
+
+</form>
+{% endblock %}

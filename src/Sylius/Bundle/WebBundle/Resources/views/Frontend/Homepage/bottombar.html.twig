@@ -1,0 +1,25 @@
+{# src/KTSport/WebBundle/Resources/views/Default/bottombar.html.twig #}
+
+<!-- ************ BARRA INFERIOR *************** -->
+<div class="row collapse hide-for-medium-down">
+	<div class="large-12 columns bottom-bar">
+		<ul>
+			{% for button in buttons %}
+				{% if loop.last %}
+					<li>
+						<a href="{{ path( (button.url) , {'_locale': (app.request.locale) }) }}" title="{{ button.title }}">
+							{{ button.title|upper }}
+						</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{ path( (button.url) , {'_locale': (app.request.locale) }) }}" title="{{ button.title }}">
+							{{ button.title|upper }}
+						</a>
+					</li>
+					<li class="separador"></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</div>

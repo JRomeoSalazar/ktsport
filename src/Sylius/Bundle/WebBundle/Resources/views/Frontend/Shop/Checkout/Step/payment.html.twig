@@ -1,0 +1,36 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% form_theme form 'SyliusWebBundle:Frontend/Shop/Checkout:fields.html.twig' %}
+
+{% block main %}
+<div class="page-header">
+    {{ 'sylius.checkout.payment.header'|trans|raw }}
+</div>
+
+{% include 'SyliusWebBundle:Frontend/Shop/Checkout:_progressBar.html.twig' %}
+
+<form method="post" action="{{ path('sylius_checkout_forward', {'stepName': context.currentStep.name}) }}" novalidate>
+
+{{ form_errors(form) }}
+<div class="panel">
+	<div class="row">
+		<div class="large-3 columns">
+			{{ form_label(form.paymentMethod) }}
+		</div>
+		<div class="large-9 columns">
+		    {% for paymentMethodForm in form.paymentMethod %}
+		        {{ form_row(paymentMethodForm) }}
+		    {% endfor %}
+		</div>
+	</div>
+</div>
+
+{{ form_widget(form._token) }}
+
+<div class="form-actions">
+    <a href="{{ path('sylius_checkout_display', {'stepName': context.previousStep.name}) }}" class="button medium radius secondary"><i class="icon-chevron-left"></i> {{ 'sylius.checkout.back'|trans }}</a> &nbsp;
+    <button type="submit" class="medium radius info">{{ 'sylius.checkout.forward'|trans }} <i class="icon-chevron-right"></i></button>
+</div>
+
+</form>
+{% endblock %}

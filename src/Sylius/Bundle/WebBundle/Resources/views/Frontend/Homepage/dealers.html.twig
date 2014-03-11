@@ -1,0 +1,20 @@
+{# src/KTSport/WebBundle/Resources/views/Default/dealers.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Distribuidores
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Dealers
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse distribuidores">
+		<div class="large-12 small-12 columns">
+			<h2>{{ button.title|upper }}</h2>
+			{{ button.content|raw }}
+		</div>
+	</div>
+{% endblock %}

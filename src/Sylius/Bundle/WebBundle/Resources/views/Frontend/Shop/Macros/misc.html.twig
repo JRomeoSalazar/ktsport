@@ -1,0 +1,7 @@
+{% macro pagination(paginator) %}
+{% if paginator.haveToPaginate() %}
+<div class="pagination-centered">
+{{ pagerfanta(paginator, 'foundation') }}
+</div>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,14 @@
+{% from 'SyliusWebBundle:Frontend/Shop/Macros:actions.html.twig' import update %}
+{% extends 'SyliusWebBundle:Frontend/Shop/Account:layout.html.twig' %}
+{% form_theme form 'SyliusWebBundle:Frontend:forms.html.twig' %}
+
+{% block main %}
+    <h4 class="title">{{ 'sylius.account.address.update'|trans }}</h4>
+
+    <div class="row">
+        <form action="{{ path('sylius_account_address_update', {'id': address.id}) }}" method="post" class="user-forms" novalidate>
+            {% include 'SyliusWebBundle:Frontend/Shop/Address:_form.html.twig' %}
+            {{ update() }}
+        </form>
+    </div>
+{% endblock %}

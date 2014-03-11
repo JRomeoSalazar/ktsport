@@ -1,0 +1,35 @@
+{# src/KTSport/WebBundle/Resources/views/Default/pdf.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - PDFs
+    {% elseif app.request.locale == 'en' %}
+        KTSport - PDFs
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse pdf">
+		<div class="large-12 small-12 columns">
+			<h2>{% trans %}Instrucciones en PDF{% endtrans %}</h2>
+			{% for button in buttons %}
+				{% if not loop.first %}
+					<h4>{{ button.title|upper }}</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>{% trans %}DOLENCIA{% endtrans %}</th>
+								<th>PDF</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'pdf' })) }}
+						</tbody>
+					</table>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{# src/KTSport/WebBundle/Resources/views/Default/index.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Instrucciones
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Instructions
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+<div class="row collapse">
+	<div class="large-12 columns instructions">
+		<div class="row collapse">
+			<div class="large-4 columns large-offset-8 section-container accordion" data-section="accordion">
+				{% for button in buttons %}
+					<section>
+						<p class="title {% if loop.first %}general{% endif %}" data-section-title>
+							{% if loop.first %}
+								<a href="{{ path( (button.url) , {'_locale': (app.request.locale), 'id': (button.id) }) }}" title="{{ button.title }}" class="general">
+									{{ button.title|upper }}
+								</a>
+							{% else %}
+								<a href="#" title="{{ button.title }}">
+									{{ button.title|upper }}
+								</a>
+							{% endif %}
+						</p>
+						{% if loop.first == false %}
+							<div class="content" data-section-content>
+						  		<ul>
+						  			{{ render (controller('sylius.controller.frontend.homepage:subbuttonsAction', { 'button': button.id, 'tag': 'li' })) }}
+						  		</ul>
+							</div>
+						{% endif %}
+					</section>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

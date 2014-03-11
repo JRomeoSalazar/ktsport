@@ -1,0 +1,22 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/SubButton/index.html.twig #}
+<h1>Listado de SubBotones</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Contenido</th>
+        <th>URL</th>
+        <th>Imagen</th>
+        <th>Botón</th>
+    </tr>
+    {% for subbutton in subbuttons %}
+    <tr>
+        <td>{{ subbutton.id }}</td>
+        <td>{{ subbutton.title }}</td>
+        <td>{{ subbutton.content | raw }}</td>
+        <td>{{ subbutton.url }}</td>
+        <td>{{ subbutton.image }}</td>
+        <td>{{ subbutton.button }}</td>
+    </tr>
+    {% endfor %}
+</table>

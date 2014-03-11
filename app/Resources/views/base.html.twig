@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+    <html class="no-js lt-ie9" lang="es" >
+<![endif]-->
+<!--[if gt IE 8]>
+    <!--> <html class="no-js" lang="es" >
+<!--<![endif]-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="all">
+    <meta http-equiv="content-language" content="es">
+    <meta name="author" content="KT SPORT - Kinesiology Therapeutic Tape">
+    <meta name="contact" content="david.vega@ktsport.es" />
+    <meta name="description" content="{{ settings.meta_description|default('sylius.meta.frontend_description'|trans) }}">
+    <meta name="keywords" content="KTTAPE, KT TAPE, KTTAPE ESPAÑA, KT TAPE ESPAÑA, KTTAPE EUROPE. KT SPORT, KTSPORT, KINESIOLOGY THERAPEUTIC TAPE, KINESIOTAPE, VENDAJE NEUROMUSCULAR, DISTRIBUIDOR DE KT TAPE, DISTRIBUIDOR DE KTTAPE, DISTRIBUIDOR DE KT TAPE EN ESPAÑA, DISTRIBUIDOR DE KTTAPE EN ESPAÑA, EL MEJOR KINESIOTAPE">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            {{ settings.title|default('sylius.meta.frontend_title'|trans) }}
+        {% endblock %}
+    </title>
+
+    {% block stylesheets %}{% endblock %}
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('bundles/syliusweb/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('bundles/syliusweb/ico/apple-touch-icon-114-precomposed.png') }}">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('bundles/syliusweb/ico/apple-touch-icon-72-precomposed.png') }}">
+                    <link rel="apple-touch-icon-precomposed" href="{{ asset('bundles/syliusweb/ico/apple-touch-icon-57-precomposed.png') }}">
+                                   <link rel="shortcut icon" href="{{ asset('bundles/syliusweb/ico/favico.ico') }}">
+  </head>
+  <body>
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+  </body>
+</html>

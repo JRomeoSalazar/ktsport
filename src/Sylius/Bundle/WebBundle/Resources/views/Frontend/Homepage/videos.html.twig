@@ -1,0 +1,38 @@
+{# src/KTSport/WebBundle/Resources/views/Default/videos.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	KT Sport - {{ instruction.title }}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse videos">
+		<div class="large-12 small-12 columns">
+			<h3>{{ instruction.title|upper }}</h3>
+			<div class="flex-video">
+				<iframe width="890" height="501" src="{{ instruction.image }}" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="large-12 small-12 columns text">
+				{{ instruction.content|raw }}
+		</div>
+		<div class="large-9 small-9 columns text">
+				<a href="{{ path( 'ktsport_instructions' , {'_locale': (app.request.locale) }) }}" class="small radius button">
+					{% trans %}VOLVER{% endtrans %}
+				</a>
+		</div>
+		{% if instruction.pdf is defined %}
+		<div class="large-3 small-3 columns text">
+			<p class="pdf">
+				{% trans %}DESCARGAR PDF{% endtrans %}&nbsp;
+				{% if instruction.pdf is not null %}
+	            	<a href="{{ asset('bundles/syliusweb/pdf/') }}{{ instruction.pdf }}" title="Instrucción {{ instruction.title }}" target="_blank">
+	            		<img src="{{ asset('bundles/syliusweb/images/icons/pdficon.png') }}" alt="PDF Icon" />
+	            	</a>
+	            {% endif %}
+			</p>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}

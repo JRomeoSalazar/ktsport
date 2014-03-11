@@ -1,0 +1,23 @@
+{% set state = order.paymentState %}
+{% set label = 'primary' %}
+{% set gateway = order.payment.method.gateway %}
+
+{% if 'pending' == state and 'contrareembolso' != gateway %}
+    {% set label = 'warning' %}
+{% elseif 'completed' == state %}
+    {% set label = 'success' %}
+{% elseif 'failed' == state %}
+    {% set label = 'danger' %}
+{% endif %}
+
+{% set title = gateway == 'contrareembolso' and state == 'pending' ? 'Contra Reembolso' : gateway == 'transferencia' and state == 'pending' ? 'Pendiente Transferencia' : 'sylius.payment.state.' ~ state %}
+
+{% if state == 'pending' %}
+	{% if gateway == 'contrareembolso' or gateway == 'transferencia' %}
+		<a href="{{ path('sylius_backend_order_finalize_payment', {'id': order.id}) }}" class="no-underline">
+			<span class="label label-{{ label }} {{ gateway }}">{{ title|trans|title }}</span>
+		</a>
+	{% endif %}
+{% else %}
+	<span class="label label-{{ label }}">{{ title|trans|title }}</span>
+{% endif %}

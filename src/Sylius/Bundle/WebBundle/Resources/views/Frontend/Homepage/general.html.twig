@@ -1,0 +1,26 @@
+{# src/KTSport/WebBundle/Resources/views/Default/videos.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	KT Sport - {{ instruction.title }}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse videos">
+		<div class="large-12 small-12 columns">
+			<h3>{{ instruction.title|upper }}</h3>
+			<div class="flex-video">
+				<iframe width="890" height="501" src="{{ instruction.image }}" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="large-12 small-12 columns text">
+				{{ instruction.content|raw }}
+		</div>
+		<div class="large-12 small-12 columns text">
+				<a href="{{ path( 'ktsport_instructions' , {'_locale': (app.request.locale) }) }}" class="small radius button">
+					{% trans %}VOLVER{% endtrans %}
+				</a>
+		</div>
+	</div>
+{% endblock %}

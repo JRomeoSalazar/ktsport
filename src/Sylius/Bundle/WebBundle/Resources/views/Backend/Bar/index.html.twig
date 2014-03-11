@@ -1,0 +1,16 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Bar/index.html.twig #}
+<h1>Listado de Barras</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Nivel</th>
+    </tr>
+    {% for bar in bars %}
+    <tr>
+        <td>{{ bar.id }}</td>
+        <td>{{ bar.title }}</td>
+        <td>{{ bar.level }}</td>
+    </tr>
+    {% endfor %}
+</table>

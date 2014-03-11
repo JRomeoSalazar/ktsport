@@ -1,0 +1,16 @@
+{% block subject %}
+    {% autoescape false %}
+    {{ 'email.order_confirmation.subject'|trans }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_text %}
+	<img src="{{ logo }}" alt="KTSport Logo" />
+	{{ 'email.order_confirmation.text'|trans({'%number%': order.number})|raw }}
+	http://localhost{{ path('sylius_account_order_show', { 'number': order.number }) }}
+{% endblock %}
+{% block body_html %}
+	<img src="{{ logo }}" alt="KTSport Logo" />
+	<p>{{ 'email.order_confirmation.text'|trans({'%number%': order.number})|raw }}</p>
+	<p>http://localhost{{ path('sylius_account_order_show', { 'number': order.number }) }}</p>
+{% endblock %}

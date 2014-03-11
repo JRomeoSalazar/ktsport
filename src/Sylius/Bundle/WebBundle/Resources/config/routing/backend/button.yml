@@ -1,0 +1,45 @@
+##
+# Button
+##
+ktsport_backend_button_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.button:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Button:index.html.twig
+
+ktsport_backend_button_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: ktsport.controller.button:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Button:create.html.twig
+            redirect: ktsport_backend_button_show
+
+ktsport_backend_button_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: ktsport.controller.button:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Button:update.html.twig
+            redirect: ktsport_backend_button_show
+
+ktsport_backend_button_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: ktsport.controller.button:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: ktsport_backend_button_index
+
+ktsport_backend_button_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.button:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Button:show.html.twig

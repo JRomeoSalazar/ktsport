@@ -1,0 +1,23 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">-->
+    <style>
+        .img-polaroid { display: none; }
+    </style>
+{% endblock %}
+
+{% block title %}
+    {{ 'sylius.account.order.invoice'|trans }} {{ order.number }}
+{% endblock %}
+
+{% block main %}
+	<h4 class="title">{{ 'sylius.account.order.invoice'|trans }} {{ order.number }}</h4>
+    {% include "SyliusWebBundle:Frontend/Shop/Account:Order/_detail.html.twig" %}
+    <div class="form-actions">
+	    <a href="{{ path('sylius_account_order_index') }}" class="button medium radius info">
+	    	<i class="icon-chevron-left"></i> {{ 'sylius.frontend.menu.account.orders'|trans }}
+	    </a>
+	</div>
+{% endblock %}

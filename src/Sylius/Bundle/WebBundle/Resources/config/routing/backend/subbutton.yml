@@ -1,0 +1,45 @@
+##
+# SubButton
+##
+ktsport_backend_subbutton_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.subbutton:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/SubButton:index.html.twig
+
+ktsport_backend_subbutton_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: ktsport.controller.subbutton:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/SubButton:create.html.twig
+            redirect: ktsport_backend_subbutton_show
+
+ktsport_backend_subbutton_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: ktsport.controller.subbutton:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/SubButton:update.html.twig
+            redirect: ktsport_backend_subbutton_show
+
+ktsport_backend_subbutton_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: ktsport.controller.subbutton:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: ktsport_backend_subbutton_index
+
+ktsport_backend_subbutton_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.subbutton:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/SubButton:show.html.twig

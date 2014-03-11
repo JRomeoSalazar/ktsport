@@ -1,0 +1,22 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Button/index.html.twig #}
+<h1>Listado de Botones</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Contenido</th>
+        <th>URL</th>
+        <th>Imagen</th>
+        <th>Barra</th>
+    </tr>
+    {% for button in buttons %}
+    <tr>
+        <td>{{ button.id }}</td>
+        <td>{{ button.title }}</td>
+        <td>{{ button.content | raw }}</td>
+        <td>{{ button.url }}</td>
+        <td>{{ button.image }}</td>
+        <td>{{ button.bar }}</td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,11 @@
+{# src/KTSport/WebBundle/Resources/views/Shop/Homepage/main.html.twig #}
+{% extends "SyliusWebBundle:Frontend/Shop:layout.html.twig" %}
+
+{% block main %}
+	<div class="products">
+		<div class="page-header">
+			{{ 'sylius.product.latest'|trans }}
+		</div>
+		{{ render(url('sylius_partial_product_latest', {'limit': 9, 'template': 'SyliusWebBundle:Frontend/Shop/Product:latest.html.twig'})) }}
+	</div>
+{% endblock %}

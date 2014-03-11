@@ -1,0 +1,15 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block main %}
+<div class="page-header">
+	{{ 'sylius.registration.confirmed.header'|trans }}
+</div>
+
+<div class="alert-box success" style="{margin-top:1em;}">
+	{{ 'sylius.registration.confirmed.success'|trans }}
+</div>
+
+<a href="{{ path('sylius_homepage') }}" class="button medium radius right">
+    <i class="icon-shopping-cart"></i> {{ 'sylius.registration.confirmed.shop'|trans }}
+</a>
+{% endblock %}

@@ -1,0 +1,45 @@
+##
+# Bar
+##
+ktsport_backend_bar_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.bar:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bar:index.html.twig
+
+ktsport_backend_bar_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: ktsport.controller.bar:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bar:create.html.twig
+            redirect: ktsport_backend_bar_show
+
+ktsport_backend_bar_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: ktsport.controller.bar:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bar:update.html.twig
+            redirect: ktsport_backend_bar_show
+
+ktsport_backend_bar_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: ktsport.controller.bar:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: ktsport_backend_bar_index
+
+ktsport_backend_bar_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: ktsport.controller.bar:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Bar:show.html.twig

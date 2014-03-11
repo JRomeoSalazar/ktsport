@@ -1,0 +1,43 @@
+##
+# Sylius Shop
+##
+sylius_homepage:
+    pattern: /
+    defaults: { _controller: sylius.controller.frontend.shop.homepage:mainAction }
+
+sylius_currency:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/currency.yml
+    prefix: /currency
+
+sylius_product:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/product.yml
+
+sylius_page:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/page.yml
+    prefix: /content
+
+sylius_checkout:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/checkout.yml
+    prefix: /checkout
+
+sylius_account:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/account.yml
+    prefix: /account
+
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix: /cart
+
+sylius_cart_summary:
+    pattern: /cart
+    defaults:
+        _controller: sylius.controller.cart:summaryAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Shop/Cart:summary.html.twig
+
+sylius_cart_save:
+    pattern: /cart/save
+    defaults:
+        _controller: sylius.controller.cart:saveAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Shop/Cart:summary.html.twig

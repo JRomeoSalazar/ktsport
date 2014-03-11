@@ -1,0 +1,16 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block flashes %}
+    {% for name, flashes in app.session.flashbag.all if name in ['success', 'error', 'fos_user_success'] %}
+        {% for flash in flashes %}
+            <div data-alert class="alert-box {{ name == 'fos_user_success' ? 'success' : name == 'error' ? 'alert' : name }}">
+                <a class="close" href="#">×</a>
+                {{ flash|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+{{ knp_menu_render('sylius.frontend.account', {'template': 'SyliusWebBundle:Frontend/Shop:menu.html.twig'}) }}
+{% endblock sidebar %}

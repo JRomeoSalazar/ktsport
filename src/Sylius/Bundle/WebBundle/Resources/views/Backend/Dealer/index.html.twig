@@ -1,0 +1,22 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dealer/index.html.twig #}
+<h1>Listado de Proveedores</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Zona</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Site</th>
+        <th>eMail</th>
+    </tr>
+    {% for dealer in dealers %}
+    <tr>
+        <td>{{ dealer.id }}</td>
+        <td>{{ dealer.title }}</td>
+        <td>{{ dealer.zone | raw }}</td>
+        <td>{{ dealer.phone }}</td>
+        <td>{{ dealer.url }}</td>
+        <td>{{ dealer.mail }}</td>
+    </tr>
+    {% endfor %}
+</table>

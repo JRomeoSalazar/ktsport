@@ -1,0 +1,20 @@
+{# src/KTSport/WebBundle/Resources/views/Default/contact.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Contacto
+    {% elseif app.request.locale == 'en' %}
+        KTSport - About Us
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+	<div class="row collapse contact">
+		<div class="large-12 small-12 columns">
+			<h2>{{ contact.title|upper }}</h2>
+			{{ contact.content|raw }}
+		</div>
+	</div>
+{% endblock %}

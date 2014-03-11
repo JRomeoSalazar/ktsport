@@ -1,0 +1,46 @@
+{# src/KTSport/WebBundle/Resources/views/Default/index.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{% if app.request.locale == 'es' %}
+        KTSport - Inicio
+    {% elseif app.request.locale == 'en' %}
+        KTSport - Index
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- ************ BLOCK CONTENT *************** -->
+<div class="row collapse">
+	<div class="large-12 columns">
+		<ul data-orbit data-options="animation_speed:700; bullets:false; slide_number_class:hide;">
+			{% for slider_image in slider_images %}
+				<li>
+					<a href="http://www.shop.ktsport.es/shop/catalog/browse?sessid=Q1f42q8KoobqTc01NujVwvwEUCDnRRmLAh6MB7UQxuZky4iFf9LVjxmiRzZGPGzk&shop_param=" title="Comprar" target="_blank">
+						<img src="{{ asset('bundles/syliusweb/images/slider/') }}{{ slider_image.image }}" alt="{{ slider_image.title }}" />
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+<div class="row collapse imagenes">
+	{% for index_image in index_images %}
+		<div class="large-4 small-4 columns">
+			<a href="{{ path( (index_image.url) , {'_locale': (app.request.locale) }) }}" title="{{ index_image.title }}">
+				<img src="{{ asset('bundles/syliusweb/images/web/') }}{{ index_image.image }}" alt="{{ index_image.title }}" />
+			</a>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% javascripts
+        output='js/index.js'
+        'bundles/syliusweb/js/index.js'
+     %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

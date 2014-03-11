@@ -1,0 +1,19 @@
+{% extends 'SyliusWebBundle:Frontend/Shop:layout.html.twig' %}
+
+{% block title %}
+    {{ 'sylius.account.order.invoice'|trans }} {{ order.number }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <style>
+        .img-polaroid { display: none; }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    	<h1>{{ 'sylius.account.order.invoice'|trans }} {{ order.number }}</h1>
+        {% include "SyliusWebBundle:Frontend/Shop/Account:Order/_detail_pdf.html.twig" %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius_account_order_index:
+    pattern: /orders
+    methods: [GET]
+    defaults: { _controller: SyliusWebBundle:Frontend/Shop/Account/Order:indexOrder }
+
+sylius_account_order_show:
+    pattern: /order/{number}
+    methods: [GET]
+    defaults: { _controller: SyliusWebBundle:Frontend/Shop/Account/Order:showOrder }
+
+sylius_account_order_invoice:
+    pattern: /invoice/{number}.{_format}
+    methods:  [GET]
+    defaults:
+        _controller: SyliusWebBundle:Frontend/Shop/Account/Order:renderInvoice
+        _format: html
+    requirements:
+        _format: html|pdf
