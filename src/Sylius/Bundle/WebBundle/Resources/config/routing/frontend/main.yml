@@ -14,6 +14,10 @@ root:
         path: /administration/login
         permanent: true
 
+ktsport_index:
+    pattern:  /inicio
+    defaults: { _controller: sylius.controller.frontend.homepage:indexAction }
+
 ktsport_instructions:
     pattern:  /instructions
     defaults: { _controller: sylius.controller.frontend.homepage:instructionsAction }
