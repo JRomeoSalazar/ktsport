@@ -13,6 +13,7 @@ www/css/*
 www/js/*
 www/assets/compiled/*
 www/media/*
+www/cgi-bin/*
 
 bin/behat
 bin/doctrine*
