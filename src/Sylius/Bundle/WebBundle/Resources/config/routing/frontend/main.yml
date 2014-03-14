@@ -2,20 +2,8 @@
 # KTSport
 ##
 
-#ktsport_index:
-#    pattern:  /
-#    defaults: { _controller: sylius.controller.frontend.homepage:indexAction }
-
-# redirecting the root
-root:
-    path: /
-    defaults:
-        _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /administration/login
-        permanent: true
-
 ktsport_index:
-    pattern:  /inicio
+    pattern:  /
     defaults: { _controller: sylius.controller.frontend.homepage:indexAction }
 
 ktsport_instructions:
