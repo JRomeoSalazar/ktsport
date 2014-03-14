@@ -57,3 +57,9 @@ ktsport_pdf:
 ktsport_shop:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/shop/main.yml
     prefix: /shop
+
+ktsport_disclaimer:
+    pattern:  /disclaimer
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: SyliusWebBundle:Frontend/Homepage:disclaimer.html.twig

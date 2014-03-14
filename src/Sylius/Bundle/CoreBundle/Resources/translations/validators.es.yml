@@ -18,6 +18,8 @@ fos_user:
         short: fos_user.username.short
 sylius:
     user:
+        disclaimer:
+            is_true: Debe aceptar el Aviso Legal
         first_name:
             max: El nombre no debe tener más de {{ limit }} caracteres.
             min: El nombre debe tener al menos {{ limit }} caracteres.

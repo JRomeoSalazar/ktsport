@@ -300,6 +300,10 @@ sylius:
         registration:
             submit: Register
     frontend:
+        close: Close
+        disclaimer:
+            self: Disclaimer
+            title: KTSport - Disclaimer
         menu:
             account:
                 orders: My orders / my invoices

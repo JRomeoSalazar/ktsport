@@ -77,6 +77,9 @@ sylius:
         user:
             billing_address: Billing address
             different_billing_address: Use different address for billing?
+            disclaimer:
+                self: Aviso Legal
+                label: I have reed and I accept the %aviso%
             enabled: Enabled
             first_name: First name:
             groups: Groups

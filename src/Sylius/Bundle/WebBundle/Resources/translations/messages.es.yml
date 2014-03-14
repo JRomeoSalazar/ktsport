@@ -293,6 +293,10 @@ sylius:
             number: Número de pedido
             shipping_address: Dirección de envío
     frontend:
+        close: Cerrar
+        disclaimer:
+            self: Aviso Legal
+            title: KTSport - Aviso Legal
         menu:
             account:
                 orders: Mis pedidos / mis facturas

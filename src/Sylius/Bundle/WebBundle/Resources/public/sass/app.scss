@@ -337,6 +337,7 @@ ul li {
 		}
 	}
 }
+
 .instructions div.content ul {
 	list-style-type: none;
 	li {
@@ -357,6 +358,21 @@ ul li {
 // Productos
 
 $content-bg-color: #232525;
+
+.disclaimer {
+	background-color: $content-bg-color;
+	padding: 0 3%;
+	padding-top: 2%;
+	h3 {
+		text-align: center;
+		color: $menu-link-hover-color;
+		font-family: "Gotham";
+	}
+	p {
+		color: $topbar-link-color;
+	}
+}
+
 .product { 
 	background-color: $content-bg-color;
 	padding: 30px;
