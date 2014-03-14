@@ -27,6 +27,7 @@ class RegistrationFormType extends BaseType
         $this->router = $router;
         parent::__construct($class);
     }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstName', 'text', array('label' => 'sylius.form.user.first_name'));
