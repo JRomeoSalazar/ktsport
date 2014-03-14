@@ -41,3 +41,4 @@ Maildir/*
 archived/
 ftp
 logs/*
+app/console
