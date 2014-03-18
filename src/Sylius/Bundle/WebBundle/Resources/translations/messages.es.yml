@@ -161,6 +161,13 @@ sylius:
         zone:
             index: Zonas
     browse_products: Mostrar productos
+    button:
+        create: Crear botón
+        create_header: Añadir nuevos botones
+        id: ID
+        index_header: Botones
+        no_results: No hay botones para mostrar.
+        update_header: Editar botón
     cancel: Cancelar
     cart:
         empty: Tu carrito está vacío
