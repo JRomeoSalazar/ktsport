@@ -109,6 +109,8 @@ sylius:
     breadcrumb:
         assortment: Varios
         build: Construir
+        button:
+            index: Botones
         configuration: Configuración
         country:
             index: Paises
@@ -162,12 +164,18 @@ sylius:
             index: Zonas
     browse_products: Mostrar productos
     button:
+        bar: Barra
         create: Crear botón
         create_header: Añadir nuevos botones
+        content: Contenido
         id: ID
+        image: Imagen
         index_header: Botones
+        manage: Gestionar botones
         no_results: No hay botones para mostrar.
+        title: Nombre
         update_header: Editar botón
+        url: URL
     cancel: Cancelar
     cart:
         empty: Tu carrito está vacío
