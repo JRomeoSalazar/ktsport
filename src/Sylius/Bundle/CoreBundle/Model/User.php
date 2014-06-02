@@ -35,7 +35,6 @@ class User extends BaseUser implements UserInterface
     protected $billingAddress;
     protected $shippingAddress;
     protected $addresses;
-    protected $disclaimer;
 
     public function __construct()
     {
@@ -366,23 +365,4 @@ class User extends BaseUser implements UserInterface
         $this->setUsernameCanonical($emailCanonical);
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDisclaimer()
-    {
-        return $this->disclaimer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setDisclaimer($disclaimer)
-    {
-        $this->disclaimer = $disclaimer;
-
-        return $this;
-    }
 }
