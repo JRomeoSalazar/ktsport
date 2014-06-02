@@ -41,7 +41,6 @@ class User extends BaseUser implements UserInterface
         $this->createdAt = new \DateTime();
         $this->orders    = new ArrayCollection();
         $this->addresses = new ArrayCollection();
-        $this->disclaimer = true;
 
         parent::__construct();
     }
