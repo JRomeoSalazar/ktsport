@@ -5,6 +5,13 @@ sylius_frontend:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/main.yml
     prefix: /web
 
+sylius_inicio:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /administration/login
+        permanent: true
+
 sylius_backend:
     resource: @SyliusWebBundle/Resources/config/routing/backend/main.yml
     prefix: /administration
