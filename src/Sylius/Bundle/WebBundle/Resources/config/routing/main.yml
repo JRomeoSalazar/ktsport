@@ -3,6 +3,7 @@
 
 sylius_frontend:
     resource: @SyliusWebBundle/Resources/config/routing/frontend/main.yml
+    prefix: /web
 
 sylius_backend:
     resource: @SyliusWebBundle/Resources/config/routing/backend/main.yml
