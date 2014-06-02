@@ -365,4 +365,5 @@ class User extends BaseUser implements UserInterface
         $this->setUsernameCanonical($emailCanonical);
 
         return $this;
+    }
 }
