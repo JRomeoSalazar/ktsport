@@ -1,0 +1,54 @@
+{% macro list(dealers) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if dealers|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ sylius_resource_sort('id', '#id') }}</th>
+            <th>{{ sylius_resource_sort('title', 'sylius.dealer.title'|trans) }}</th>
+            <th>{{ sylius_resource_sort('level', 'sylius.dealer.zone'|trans) }}</th>
+            <th>{{ sylius_resource_sort('level', 'sylius.dealer.phone'|trans) }}</th>
+            <th>{{ sylius_resource_sort('level', 'sylius.dealer.url'|trans) }}</th>
+            <th>{{ sylius_resource_sort('level', 'sylius.dealer.mail'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dealer in dealers %}
+        <tr id="{{ dealer.id }}">
+            <td class="id">
+                {{ dealer.id }}
+            </td>
+            <td>
+                <a href="{{ path('ktsport_backend_dealer_show', {'id': dealer.id}) }}">{{ dealer.title }}</a>
+            </td>
+            <td>
+                {{ dealer.zone }}
+            </td>
+            <td>
+                {{ dealer.phone }}
+            </td>
+            <td>
+                {{ dealer.url }}
+            </td>
+            <td>
+                {{ dealer.mail }}
+            </td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.edit(path('ktsport_backend_dealer_update', {'id': dealer.id})) }}
+                    {{ buttons.delete(path('ktsport_backend_dealer_delete', {'id': dealer.id})) }}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.dealer.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

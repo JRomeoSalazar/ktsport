@@ -1,22 +1,27 @@
-{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Event/index.html.twig #}
-<h1>Listado de Eventos</h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Fecha</th>
-            <th>Evento</th>
-            <th>Ciudad</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for event in events %}
-        <tr>
-            <td>{{ event.id }}</td>
-            <td>{{ event.date|date("d.m.Y") }}</td>
-            <td>{{ event.title }}</td>
-            <td>{{ event.city|upper }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/Event:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'sylius.breadcrumb.event.index'|trans }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('ktsport_backend_event_create'), 'sylius.event.create'|trans) }}
+        {{ buttons.manage(path('ktsport_backend_event_index'), 'sylius.event.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.event.index_header'|trans|raw }}</h1>
+</div>
+
+{{ pagination(events) }}
+{{ list(events) }}
+{{ pagination(events) }}
+
+{% endblock %}

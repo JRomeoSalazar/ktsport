@@ -1,22 +1,27 @@
-{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Dealer/index.html.twig #}
-<h1>Listado de Proveedores</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Zona</th>
-        <th>Nombre</th>
-        <th>Teléfono</th>
-        <th>Site</th>
-        <th>eMail</th>
-    </tr>
-    {% for dealer in dealers %}
-    <tr>
-        <td>{{ dealer.id }}</td>
-        <td>{{ dealer.title }}</td>
-        <td>{{ dealer.zone | raw }}</td>
-        <td>{{ dealer.phone }}</td>
-        <td>{{ dealer.url }}</td>
-        <td>{{ dealer.mail }}</td>
-    </tr>
-    {% endfor %}
-</table>
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/Dealer:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'sylius.breadcrumb.dealer.index'|trans }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('ktsport_backend_dealer_create'), 'sylius.dealer.create'|trans) }}
+        {{ buttons.manage(path('ktsport_backend_dealer_index'), 'sylius.dealer.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.dealer.index_header'|trans|raw }}</h1>
+</div>
+
+{{ pagination(dealers) }}
+{{ list(dealers) }}
+{{ pagination(dealers) }}
+
+{% endblock %}

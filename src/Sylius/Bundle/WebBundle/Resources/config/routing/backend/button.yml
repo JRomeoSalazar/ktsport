@@ -8,6 +8,7 @@ ktsport_backend_button_index:
         _controller: ktsport.controller.button:indexAction
         _sylius:
             template: SyliusWebBundle:Backend/Button:index.html.twig
+            paginate: false
 
 ktsport_backend_button_create:
     pattern: /new

@@ -106,14 +106,32 @@ sylius:
             registrations_this_month: Usuarios
             sales_this_month: Ventas
     backend_welcome: Hola <b>%name%</b>!
+    bar:
+        create: Crear barra
+        create_header: Añadir nuevas barras
+        id: ID
+        index_header: Barras
+        level: Nivel
+        manage: Gestionar barras
+        no_results: No hay barras para mostrar.
+        title: Nombre
+        update_header: Editar barra
     breadcrumb:
         assortment: Varios
+        bar:
+            index: Barras
         build: Construir
+        button:
+            index: Botones
         configuration: Configuración
         country:
             index: Paises
         customers: Clientes
+        dealer:
+            index: Proveedores
         edit: Editar
+        event:
+            index: Eventos
         exchange_rate:
             index: Tipos de cambio
         general_settings: Configuración general
@@ -148,6 +166,8 @@ sylius:
             index: Categorías de envío
         shipping_method:
             index: Métodos de envío
+        subbutton:
+            index: SubBotones
         tax_category:
             index: Categorías de impuestos
         tax_rate:
@@ -162,12 +182,18 @@ sylius:
             index: Zonas
     browse_products: Mostrar productos
     button:
+        bar: Barra
         create: Crear botón
         create_header: Añadir nuevos botones
+        content: Contenido
         id: ID
+        image: Imagen
         index_header: Botones
+        manage: Gestionar botones
         no_results: No hay botones para mostrar.
+        title: Nombre
         update_header: Editar botón
+        url: URL
     cancel: Cancelar
     cart:
         empty: Tu carrito está vacío
@@ -252,9 +278,34 @@ sylius:
         update_header: Editando país
     create: Crear
     created_at: Creado el
+    dealer:
+        create: Crear proveedor
+        create_header: Añadir nuevos proveedores
+        id: ID
+        index_header: Proveedores
+        mail: Correo
+        manage: Gestionar proveedores
+        no_results: No hay proveedores para mostrar.
+        phone: Teléfono
+        title: Nombre
+        update_header: Editar proveedor
+        url: Web
+        zone: Zona
     delete: Borrar
     edit: Editar
     email: E-Mail
+    event:
+        city: Ciudad
+        create: Crear evento
+        create_header: Añadir nuevos eventos
+        date: Fecha
+        id: ID
+        index_header: Eventos
+        level: Nivel
+        manage: Gestionar eventos
+        no_results: No hay eventos para mostrar.
+        title: Nombre
+        update_header: Editar evento
     exchange_rate:
         create: Crear tipo de cambio
         create_header: Nuevo tipo de cambio
@@ -637,6 +688,19 @@ sylius:
         on_hand: Nivel de stock
         sku: sku
         updated_at: Última actualización
+    subbutton:
+        button: Botón
+        create: Crear sub botón
+        create_header: Añadir nuevos sub botones
+        content: Contenido
+        id: ID
+        image: Imagen
+        index_header: SubBotones
+        manage: Gestionar sub botones
+        no_results: No hay sub botones para mostrar.
+        title: Nombre
+        update_header: Editar sub botón
+        url: URL
     tax_category:
         create: Crear categoría de impuestos
         create_header: Nueva categoría de impuestos
