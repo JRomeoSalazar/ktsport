@@ -8,6 +8,8 @@ ktsport_backend_subbutton_index:
         _controller: ktsport.controller.subbutton:indexAction
         _sylius:
             template: SyliusWebBundle:Backend/SubButton:index.html.twig
+            method: createFilterPaginator
+            arguments: [$criteria, $sorting]
             paginate: false
             limit: 200
 

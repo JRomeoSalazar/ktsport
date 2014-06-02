@@ -24,4 +24,51 @@ class SubButtonsRepository extends EntityRepository
                 ->getQuery()
                 ->getResult();
     }
+
+    /**
+     * Create filter paginator.
+     *
+     * @param array $criteria
+     * @param array $sorting
+     *
+     * @return PagerfantaInterface
+     */
+    public function createFilterPaginator($criteria = array(), $sorting = array())
+    {
+        $queryBuilder = parent::getCollectionQueryBuilder()
+            ->select('subbutton')
+        ;
+
+        if (!empty($criteria['title'])) {
+            $queryBuilder
+                ->andWhere('subbutton.title LIKE :title')
+                ->setParameter('title', '%'.$criteria['title'].'%')
+            ;
+        }
+        if (!empty($criteria['content'])) {
+            $queryBuilder
+                ->andWhere('subbutton.content LIKE :content')
+                ->setParameter('content', '%'.$criteria['content'].'%')
+            ;
+        }
+
+        if (empty($sorting)) {
+            if (!is_array($sorting)) {
+                $sorting = array();
+            }
+            $sorting['title'] = 'desc';
+        }
+
+        $this->applySorting($queryBuilder, $sorting);
+
+        return $this->getPaginator($queryBuilder);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAlias()
+    {
+        return 'subbutton';
+    }
 }
