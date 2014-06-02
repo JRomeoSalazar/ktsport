@@ -16,6 +16,9 @@ sylius:
             body: Contenido
             id: ID
             title: Título
+        button_filter:
+            title: Nombre
+            content: Contenido
         cart:
             coupon: Cupón
         checkout:
@@ -57,6 +60,9 @@ sylius:
                 default_tax_zone: Zona fiscal por defecto
         shipping_method:
             zone: Zona
+        subbutton_filter:
+            title: Nombre
+            content: Contenido
         taxon:
             file: Seleccione una imagen
         taxonomy:

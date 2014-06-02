@@ -1,16 +1,27 @@
-{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/Bar/index.html.twig #}
-<h1>Listado de Barras</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Título</th>
-        <th>Nivel</th>
-    </tr>
-    {% for bar in bars %}
-    <tr>
-        <td>{{ bar.id }}</td>
-        <td>{{ bar.title }}</td>
-        <td>{{ bar.level }}</td>
-    </tr>
-    {% endfor %}
-</table>
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/Bar:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'sylius.breadcrumb.bar.index'|trans }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('ktsport_backend_bar_create'), 'sylius.bar.create'|trans) }}
+        {{ buttons.manage(path('ktsport_backend_bar_index'), 'sylius.bar.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.bar.index_header'|trans|raw }}</h1>
+</div>
+
+{{ pagination(bars) }}
+{{ list(bars) }}
+{{ pagination(bars) }}
+
+{% endblock %}

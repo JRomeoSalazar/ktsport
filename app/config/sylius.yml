@@ -164,5 +164,6 @@ sylius_resource:
         ktsport.subbutton:
             driver: doctrine/orm
             classes:
+                controller: Sylius\Bundle\CoreBundle\Controller\SubButtonController
                 model: KTSport\WebBundle\Entity\SubButtons
                 repository: KTSport\WebBundle\Entity\SubButtonsRepository

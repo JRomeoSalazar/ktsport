@@ -1,0 +1,54 @@
+{% macro list(subbuttons) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if subbuttons|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ sylius_resource_sort('id', '#id') }}</th>
+            <th>{{ sylius_resource_sort('title', 'sylius.subbutton.title'|trans) }}</th>
+            <th>{{ sylius_resource_sort('content', 'sylius.subbutton.content'|trans) }}</th>
+            <th>{{ sylius_resource_sort('url', 'sylius.subbutton.url'|trans) }}</th>
+            <th>{{ sylius_resource_sort('image', 'sylius.subbutton.image'|trans) }}</th>
+            <th>{{ sylius_resource_sort('button', 'sylius.subbutton.button'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for subbutton in subbuttons %}
+        <tr id="{{ subbutton.id }}">
+            <td class="id">
+                {{ subbutton.id }}
+            </td>
+            <td>
+                <a href="{{ path('ktsport_backend_subbutton_show', {'id': subbutton.id}) }}">{{ subbutton.title }}</a>
+            </td>
+            <td>
+                {{ subbutton.content }}
+            </td>
+            <td>
+                {{ subbutton.url }}
+            </td>
+            <td>
+                {{ subbutton.image }}
+            </td>
+            <td>
+                {{ subbutton.button }}
+            </td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.edit(path('ktsport_backend_subbutton_update', {'id': subbutton.id})) }}
+                    {{ buttons.delete(path('ktsport_backend_subbutton_delete', {'id': subbutton.id})) }}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.subbutton.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

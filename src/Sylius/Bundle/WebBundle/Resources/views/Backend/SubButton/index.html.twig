@@ -1,22 +1,29 @@
-{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/SubButton/index.html.twig #}
-<h1>Listado de SubBotones</h1>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Título</th>
-        <th>Contenido</th>
-        <th>URL</th>
-        <th>Imagen</th>
-        <th>Botón</th>
-    </tr>
-    {% for subbutton in subbuttons %}
-    <tr>
-        <td>{{ subbutton.id }}</td>
-        <td>{{ subbutton.title }}</td>
-        <td>{{ subbutton.content | raw }}</td>
-        <td>{{ subbutton.url }}</td>
-        <td>{{ subbutton.image }}</td>
-        <td>{{ subbutton.button }}</td>
-    </tr>
-    {% endfor %}
-</table>
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/SubButton:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'sylius.breadcrumb.subbutton.index'|trans }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('ktsport_backend_subbutton_create'), 'sylius.subbutton.create'|trans) }}
+        {{ buttons.manage(path('ktsport_backend_subbutton_index'), 'sylius.subbutton.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.subbutton.index_header'|trans|raw }}</h1>
+</div>
+
+{% render(controller('sylius.controller.backend.form:filterAction', {'type': 'sylius_subbutton_filter', 'template': 'SyliusWebBundle:Backend/SubButton:filterForm.html.twig'})) %}
+
+{{ pagination(subbuttons) }}
+{{ list(subbuttons) }}
+{{ pagination(subbuttons) }}
+
+{% endblock %}

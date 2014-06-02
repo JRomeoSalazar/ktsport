@@ -8,6 +8,7 @@ ktsport_backend_subbutton_index:
         _controller: ktsport.controller.subbutton:indexAction
         _sylius:
             template: SyliusWebBundle:Backend/SubButton:index.html.twig
+            paginate: false
 
 ktsport_backend_subbutton_create:
     pattern: /new
