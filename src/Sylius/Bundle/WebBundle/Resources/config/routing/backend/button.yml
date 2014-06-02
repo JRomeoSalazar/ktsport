@@ -9,6 +9,7 @@ ktsport_backend_button_index:
         _sylius:
             template: SyliusWebBundle:Backend/Button:index.html.twig
             paginate: false
+            limit: 200
 
 ktsport_backend_button_create:
     pattern: /new
