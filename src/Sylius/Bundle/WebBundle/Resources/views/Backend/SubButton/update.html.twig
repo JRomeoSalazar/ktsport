@@ -1,7 +1,32 @@
-{# src/Sylius/Bundle/WebBundle/Resources/views/Backend/SubButton/update.html.twig #}
-<form action="{{ path('ktsport_backend_subbutton_update', {'id': subbutton.id}) }}" method="post">
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_subbutton_index') }}">{{ 'sylius.breadcrumb.subbutton.index'|trans }}</a></li>
+    <li><a href="{{ path('ktsport_backend_subbutton_show', {'id': subbutton.id}) }}">{{ subbutton.title }}</a></li>
+    <li>{{ 'sylius.breadcrumb.edit'|trans }}</li>
+</ol>
+{% endblock %}
+
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="glyphicon glyphicon-pencil"></i> {{ 'sylius.subbutton.update_header'|trans|raw }}</h1>
+</div>
+
+{{ form_errors(form) }}
+
+<form action="{{ path('ktsport_backend_subbutton_update', {'id': subbutton.id}) }}" method="post" class="form-horizontal" novalidate>
     <input type="hidden" name="_method" value="PUT">
-	{{ form_errors(form) }}
-	{{ form_widget(form) }}
-	<input type="submit" />
+    {% include 'SyliusWebBundle:Backend/SubButton:_form.html.twig' %}
+    {{ update() }}
 </form>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ tinymce_init() }}
+{% endblock %}

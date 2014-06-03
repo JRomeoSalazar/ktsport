@@ -151,6 +151,31 @@ class BackendMenuBuilder extends MenuBuilder
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.content', $section)))
         ;
 
+        $child->addChild('bars', array(
+            'route' => 'ktsport_backend_bar_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.bars', $section)));
+
+        $child->addChild('buttons', array(
+            'route' => 'ktsport_backend_button_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.buttons', $section)));
+        
+        $child->addChild('subbuttons', array(
+            'route' => 'ktsport_backend_subbutton_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.subbuttons', $section)));
+        
+        $child->addChild('events', array(
+            'route' => 'ktsport_backend_event_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.events', $section)));
+        
+        $child->addChild('dealers', array(
+            'route' => 'ktsport_backend_dealer_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.dealers', $section)));
+
         $child->addChild('blocks', array(
             'route' => 'sylius_backend_block_index',
             'labelAttributes' => array('icon' => 'glyphicon glyphicon-th-large'),

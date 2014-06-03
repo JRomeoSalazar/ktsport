@@ -26,7 +26,7 @@
                 <a href="{{ path('ktsport_backend_subbutton_show', {'id': subbutton.id}) }}">{{ subbutton.title }}</a>
             </td>
             <td>
-                {{ subbutton.content }}
+                {{ subbutton.content|raw }}
             </td>
             <td>
                 {{ subbutton.url }}

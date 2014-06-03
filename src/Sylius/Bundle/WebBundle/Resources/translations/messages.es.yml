@@ -114,6 +114,7 @@ sylius:
         level: Nivel
         manage: Gestionar barras
         no_results: No hay barras para mostrar.
+        show_header: Detalles de la barra
         title: Nombre
         update_header: Editar barra
     breadcrumb:
@@ -191,6 +192,7 @@ sylius:
         index_header: Botones
         manage: Gestionar botones
         no_results: No hay botones para mostrar.
+        show_header: Detalles del botón
         title: Nombre
         update_header: Editar botón
         url: URL
@@ -287,6 +289,7 @@ sylius:
         manage: Gestionar proveedores
         no_results: No hay proveedores para mostrar.
         phone: Teléfono
+        show_header: Detalles del proveedor
         title: Nombre
         update_header: Editar proveedor
         url: Web
@@ -304,6 +307,7 @@ sylius:
         level: Nivel
         manage: Gestionar eventos
         no_results: No hay eventos para mostrar.
+        show_header: Detalles del evento
         title: Nombre
         update_header: Editar evento
     exchange_rate:
@@ -698,6 +702,7 @@ sylius:
         index_header: SubBotones
         manage: Gestionar sub botones
         no_results: No hay sub botones para mostrar.
+        show_header: Detalles del sub botón
         title: Nombre
         update_header: Editar sub botón
         url: URL

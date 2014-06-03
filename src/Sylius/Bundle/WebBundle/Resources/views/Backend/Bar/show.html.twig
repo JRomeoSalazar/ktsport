@@ -1,0 +1,37 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_bar_index') }}">{{ 'sylius.breadcrumb.bar.index'|trans }}</a></li>
+    <li>{{ bar.title }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('ktsport_backend_bar_index'), 'sylius.bar.manage'|trans) }}
+        {{ buttons.edit(path('ktsport_backend_bar_update', {'id': bar.id})) }}
+        {{ buttons.delete(path('ktsport_backend_bar_delete', {'id': bar.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.bar.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ bar.id }} {{ bar.title }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.bar.level'|trans }}</strong></td>
+            <td>{{ bar.level }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
