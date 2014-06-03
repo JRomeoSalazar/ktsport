@@ -34,12 +34,16 @@ sylius:
                 zones: Zonas
             sidebar:
                 assortment: Varios
+                bars: Barras
                 blocks: Bloques
+                buttons: Botones
                 configuration: Configuración
                 content: Contenido
                 countries: Países
                 customer: Clientes
                 dashboard: Panel general
+                dealers: Proveedores
+                events: Eventos
                 exchange_rates: Tipos de cambio
                 general_settings: Configuración general
                 groups: Grupos
@@ -61,6 +65,7 @@ sylius:
                 shipping_categories: Categorías de envío
                 shipping_methods: Métodos de envío
                 stockables: Niveles de inventario
+                subbuttons: Sub botones
                 tax_categories: Categorías de impuestos
                 tax_rates: Tasas de impuestos
                 taxation_settings: Configuración de impuestos

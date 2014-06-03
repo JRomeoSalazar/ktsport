@@ -5,6 +5,9 @@
 {% block topbar %}
 <ol class="breadcrumb">
     <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_button_index') }}">{{ 'sylius.breadcrumb.button.index'|trans }}</a></li>
+    <li><a href="{{ path('ktsport_backend_button_show', {'id': button.id}) }}">{{ button.title }}</a></li>
+    <li>{{ 'sylius.breadcrumb.edit'|trans }}</li>
 </ol>
 {% endblock %}
 

@@ -10,7 +10,11 @@ class SubButtonType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('title')
-				->add('content')
+				->add('content', 'textarea', array(
+			        'attr' => array(
+			            'class' => 'tinymce'
+			        )
+			    ))
 				->add('url')
 				->add('image')
 				->add('pdf')

@@ -1,0 +1,49 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_button_index') }}">{{ 'sylius.breadcrumb.button.index'|trans }}</a></li>
+    <li>{{ button.title }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('ktsport_backend_button_index'), 'sylius.button.manage'|trans) }}
+        {{ buttons.edit(path('ktsport_backend_button_update', {'id': button.id})) }}
+        {{ buttons.delete(path('ktsport_backend_button_delete', {'id': button.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.button.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ button.id }} {{ button.title }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.button.content'|trans }}</strong></td>
+            <td>{{ button.content|raw }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.button.url'|trans }}</strong></td>
+            <td>{{ button.url }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.button.image'|trans }}</strong></td>
+            <td>{{ button.image }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.button.bar'|trans }}</strong></td>
+            <td>{{ button.bar }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

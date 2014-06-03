@@ -1,0 +1,49 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_subbutton_index') }}">{{ 'sylius.breadcrumb.subbutton.index'|trans }}</a></li>
+    <li>{{ subbutton.title }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('ktsport_backend_subbutton_index'), 'sylius.subbutton.manage'|trans) }}
+        {{ buttons.edit(path('ktsport_backend_subbutton_update', {'id': subbutton.id})) }}
+        {{ buttons.delete(path('ktsport_backend_subbutton_delete', {'id': subbutton.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.subbutton.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ subbutton.id }} {{ subbutton.title }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.subbutton.content'|trans }}</strong></td>
+            <td>{{ subbutton.content|raw }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.subbutton.url'|trans }}</strong></td>
+            <td>{{ subbutton.url }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.subbutton.image'|trans }}</strong></td>
+            <td>{{ subbutton.image }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.subbutton.bar'|trans }}</strong></td>
+            <td>{{ subbutton.button }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

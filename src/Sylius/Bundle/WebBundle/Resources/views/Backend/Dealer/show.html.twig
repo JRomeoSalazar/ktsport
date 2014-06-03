@@ -1,0 +1,49 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('ktsport_backend_dealer_index') }}">{{ 'sylius.breadcrumb.dealer.index'|trans }}</a></li>
+    <li>{{ dealer.title }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('ktsport_backend_dealer_index'), 'sylius.dealer.manage'|trans) }}
+        {{ buttons.edit(path('ktsport_backend_dealer_update', {'id': dealer.id})) }}
+        {{ buttons.delete(path('ktsport_backend_dealer_delete', {'id': dealer.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.dealer.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ dealer.id }} {{ dealer.title }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.dealer.zone'|trans }}</strong></td>
+            <td>{{ dealer.zone }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.dealer.phone'|trans }}</strong></td>
+            <td>{{ dealer.phone }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.dealer.url'|trans }}</strong></td>
+            <td>{{ dealer.url }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.dealer.mail'|trans }}</strong></td>
+            <td>{{ dealer.mail }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
