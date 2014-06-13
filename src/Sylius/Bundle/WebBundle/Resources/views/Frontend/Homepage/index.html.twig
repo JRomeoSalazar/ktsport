@@ -16,7 +16,7 @@
 		<ul data-orbit data-options="animation_speed:700; bullets:false; slide_number_class:hide;">
 			{% for slider_image in slider_images %}
 				<li>
-					<a href="http://www.shop.ktsport.es/shop/catalog/browse?sessid=Q1f42q8KoobqTc01NujVwvwEUCDnRRmLAh6MB7UQxuZky4iFf9LVjxmiRzZGPGzk&shop_param=" title="Comprar" target="_blank">
+					<a href="{{ slider_image.url }}" title="Comprar" target="_blank">
 						<img src="{{ asset('bundles/syliusweb/images/slider/') }}{{ slider_image.image }}" alt="{{ slider_image.title }}" />
 					</a>
 				</li>
