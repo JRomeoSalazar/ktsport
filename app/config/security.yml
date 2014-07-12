@@ -38,7 +38,7 @@ security:
                 login_path: /login
                 check_path: /login_check
                 failure_path: /login
-                default_target_path: /shop
+                default_target_path: /
                 use_forward:  false
                 use_referer: true
             logout:
