@@ -164,4 +164,15 @@
         </property>
     </class>
 
+    <class name="Sylius\Bundle\CoreBundle\Model\NewsletterUser">
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">sylius.newsletter_user.email.not_blank</option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">sylius.newsletter_user.email.email</option>
+            </constraint>
+        </property>
+    </class>
+
 </constraint-mapping>

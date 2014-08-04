@@ -54,6 +54,7 @@
         <parameter key="sylius.form.type.image.class">Sylius\Bundle\CoreBundle\Form\Type\ImageType</parameter>
         <parameter key="sylius.form.type.list.class">Sylius\Bundle\CoreBundle\Form\Type\ListType</parameter>
         <parameter key="sylius.form.type.descuento.class">Sylius\Bundle\CoreBundle\Form\Type\DescuentoType</parameter>
+        <parameter key="sylius.form.type.newsletter_user.class">Sylius\Bundle\CoreBundle\Form\Type\NewsletterUserType</parameter>
         <parameter key="sylius.model.descuento.class">Sylius\Bundle\CoreBundle\Model\Descuento</parameter>
         <parameter key="sylius.form.type.user_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\UserFilterType</parameter>
         <parameter key="sylius.form.type.product_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\ProductFilterType</parameter>
@@ -343,6 +344,9 @@
         <service id="sylius.form.type.descuento" class="%sylius.form.type.descuento.class%">
             <argument>%sylius.model.descuento.class%</argument>
             <tag name="form.type" alias="sylius_descuento" />
+        </service>
+        <service id="sylius.form.type.newsletter_user" class="%sylius.form.type.newsletter_user.class%">
+            <tag name="form.type" alias="sylius_newsletter_user" />
         </service>
 
         <service id="sylius.listener.image_upload" class="%sylius.listener.image_upload.class%">

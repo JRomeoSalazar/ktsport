@@ -406,6 +406,17 @@ sylius:
         frontend_keywords: sylius, ecommerce, symfony2, tienda, carrito, webshop
         frontend_title: Sylius, ecommerce moderno para Symfony2
     newest: Nuevos productos
+    newsletter_user:
+        create: Registrar usuario en la newsletter
+        create_header: Registrar nuevos uusuarios en la newsletter
+        email: Correo electrónico
+        id: ID
+        index_header: Usuarios de la newsletter
+        manage: Gestionar usuarios de la newsletter
+        name: Nombre
+        no_results: No hay usuarios de la newsletter para mostrar.
+        show_header: Detalles del usuario de la newsletter
+        update_header: Editar usuario de la newsletter
     no: No
     option:
         create: Crear opción

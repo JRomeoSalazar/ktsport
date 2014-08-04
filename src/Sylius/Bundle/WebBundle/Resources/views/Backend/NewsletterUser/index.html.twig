@@ -1,0 +1,27 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Macros:misc.html.twig' import pagination %}
+{% from 'SyliusWebBundle:Backend/NewsletterUser:macros.html.twig' import list %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.assortment'|trans }}</li>
+    <li>{{ 'sylius.breadcrumb.newsletter_user.index'|trans }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.create(path('sylius_backend_newsletter_user_create'), 'sylius.newsletter_user.create'|trans) }}
+        {{ buttons.manage(path('sylius_backend_newsletter_user_index'), 'sylius.newsletter_user.manage'|trans) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.newsletter_user.index_header'|trans|raw }}</h1>
+</div>
+
+{{ pagination(newsletter_users) }}
+{{ list(newsletter_users) }}
+{{ pagination(newsletter_users) }}
+
+{% endblock %}

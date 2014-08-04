@@ -1,0 +1,45 @@
+##
+# NewsletterUser
+##
+sylius_backend_newsletter_user_index:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.newsletter_user:indexAction
+        _sylius:
+            template: SyliusWebBundle:Backend/NewsletterUser:index.html.twig
+
+sylius_backend_newsletter_user_create:
+    pattern: /new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.newsletter_user:createAction
+        _sylius:
+            template: SyliusWebBundle:Backend/NewsletterUser:create.html.twig
+            redirect: sylius_backend_newsletter_user_show
+
+sylius_backend_newsletter_user_update:
+    pattern: /{id}/edit
+    methods: [GET, PUT]
+    defaults:
+        _controller: sylius.controller.newsletter_user:updateAction
+        _sylius:
+            template: SyliusWebBundle:Backend/NewsletterUser:update.html.twig
+            redirect: sylius_backend_newsletter_user_show
+
+sylius_backend_newsletter_user_delete:
+    pattern: /{id}
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.newsletter_user:deleteAction
+        _sylius:
+            template: SyliusWebBundle:Backend/Misc:delete.html.twig
+            redirect: sylius_backend_newsletter_user_index
+
+sylius_backend_newsletter_user_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.newsletter_user:showAction
+        _sylius:
+            template: SyliusWebBundle:Backend/NewsletterUser:show.html.twig

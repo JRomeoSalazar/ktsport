@@ -17,6 +17,10 @@ fos_user:
         long: fos_user.username.long
         short: fos_user.username.short
 sylius:
+    newsletter_user:
+        email:
+            email: La dirección de correo electrónico debe ser válida.
+            not_blank: Por favor, introduzca una dirección de email.
     user:
         disclaimer:
             is_true: Debe aceptar el Aviso Legal

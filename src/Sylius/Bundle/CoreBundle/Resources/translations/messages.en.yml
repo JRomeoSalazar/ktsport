@@ -34,6 +34,9 @@ sylius:
         locale:
             code: Code
             enabled: Enabled
+        newsletter_user:
+            email: Email
+            name: Name
         order_filter:
             created_at_from: From
             created_at_to: To

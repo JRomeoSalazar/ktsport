@@ -1,0 +1,42 @@
+{% macro list(newsletter_users) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if newsletter_users|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ sylius_resource_sort('id', '#id') }}</th>
+            <th>{{ sylius_resource_sort('email', 'sylius.newsletter_user.email'|trans) }}</th>
+            <th>{{ sylius_resource_sort('name', 'sylius.newsletter_user.name'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for newsletter_user in newsletter_users %}
+        <tr id="{{ newsletter_user.id }}">
+            <td class="id">
+                {{ newsletter_user.id }}
+            </td>
+            <td>
+                <a href="{{ path('sylius_backend_newsletter_user_show', {'id': newsletter_user.id}) }}">{{ newsletter_user.email }}</a>
+            </td>
+            <td>
+                {{ newsletter_user.name }}
+            </td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.edit(path('sylius_backend_newsletter_user_update', {'id': newsletter_user.id})) }}
+                    {{ buttons.delete(path('sylius_backend_newsletter_user_delete', {'id': newsletter_user.id})) }}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.newsletter_user.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}
