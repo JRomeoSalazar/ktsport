@@ -92,7 +92,7 @@ class HomepageController extends Controller
             throw $this->createNotFoundException('Debes introducir un id válido.');
         }
 
-        if ( $id == 9 ) {
+        if ( $id == 0 ) {
             $rep = 'ktsport.repository.button';
         }
         else {
