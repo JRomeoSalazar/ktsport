@@ -36,7 +36,7 @@ ktsport_events:
 
 ktsport_videos:
     pattern:  /videos/{id}
-    defaults: { _controller: sylius.controller.frontend.homepage:videosAction, id: 0 }
+    defaults: { _controller: sylius.controller.frontend.homepage:videosAction, id: 10000 }
 
 ktsport_dealers:
     pattern:  /dealers
