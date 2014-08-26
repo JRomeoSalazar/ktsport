@@ -94,6 +94,7 @@ class HomepageController extends Controller
 
         if ( $id == 10000 ) {
             $rep = 'ktsport.repository.button';
+            $id = 9;
         }
         else {
             $rep = 'ktsport.repository.subbutton';
