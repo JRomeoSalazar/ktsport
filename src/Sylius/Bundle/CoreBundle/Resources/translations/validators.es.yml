@@ -17,6 +17,16 @@ fos_user:
         long: fos_user.username.long
         short: fos_user.username.short
 sylius:
+    newsletter:
+        emisor:
+            email: La dirección de correo electrónico del emisor debe ser válida.
+            not_blank: Por favor, introduzca una dirección de email para el emisor.
+        destinatarios:
+            not_blank: Por favor, introduzca al menos un destinatario.
+        titulo:
+            not_blank: Por favor, introduzca un título para la newsletter.
+        contenido:
+            not_blank: Por favor, introduzca el contenido para la newsletter.
     newsletter_user:
         email:
             email: La dirección de correo electrónico debe ser válida.

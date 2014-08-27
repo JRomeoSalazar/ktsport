@@ -61,6 +61,10 @@ sylius_backend_product:
     resource: @SyliusWebBundle/Resources/config/routing/backend/product.yml
     prefix: /products
 
+sylius_backend_newsletter:
+    resource: @SyliusWebBundle/Resources/config/routing/backend/newsletter.yml
+    prefix: /newsletter
+
 sylius_backend_newsletter_user:
     resource: @SyliusWebBundle/Resources/config/routing/backend/newsletter_user.yml
     prefix: /newsletter-user

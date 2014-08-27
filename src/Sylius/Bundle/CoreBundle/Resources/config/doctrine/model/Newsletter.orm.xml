@@ -8,7 +8,7 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="emisor" type="string" column="emisor" />
-    <field name="destinatarios" type="string" column="destinatarios" />
+    <field name="destinatarios" type="array" column="destinatarios" />
     <field name="fecha" type="datetime" column="fecha">
       <gedmo:timestampable on="create"/>
     </field>

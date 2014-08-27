@@ -151,9 +151,14 @@ class BackendMenuBuilder extends MenuBuilder
             ->setLabel($this->translate(sprintf('sylius.backend.menu.%s.content', $section)))
         ;
 
+        $child->addChild('newsletters', array(
+            'route' => 'sylius_backend_newsletter_index',
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-envelope'),
+        ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletters', $section)));
+
         $child->addChild('newsletter_users', array(
             'route' => 'sylius_backend_newsletter_user_index',
-            'labelAttributes' => array('icon' => 'glyphicon glyphicon-envelope'),
+            'labelAttributes' => array('icon' => 'glyphicon glyphicon-user'),
         ))->setLabel($this->translate(sprintf('sylius.backend.menu.%s.newsletter_users', $section)));
 
         $child->addChild('bars', array(

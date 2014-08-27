@@ -31,6 +31,12 @@ sylius:
             porcentaje: Porcentaje de descuento
         image:
             file: Imagen
+        newsletter:
+            contenido: Contenido
+            destinatarios: Destinatarios
+            emisor: Email
+            mes: Mes
+            titulo: Título
         newsletter_user:
             email: Email
             name: Nombre

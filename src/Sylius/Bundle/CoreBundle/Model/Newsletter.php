@@ -2,8 +2,6 @@
 
 namespace Sylius\Bundle\CoreBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +20,7 @@ class Newsletter
     protected $emisor;
 
     /**
-     * @var Collection $destinatarios
+     * @var array $destinatarios
      */
     protected $destinatarios;
 
@@ -51,7 +49,6 @@ class Newsletter
      */
     public function __construct()
     {
-        $this->destinatarios = new ArrayCollection();
         $this->fecha = new \DateTime();
         $this->mes = date('n');
     }
@@ -88,45 +85,24 @@ class Newsletter
     }
 
     /**
+     * Set destinatarios.
+     *
+     * @param array $destinatarios
+     * @return Newsletter
+     */
+    public function setDestinatarios($destinatarios)
+    {
+        $this->destinatarios = $destinatarios;
+    }
+
+    /**
      * Get destinatarios.
      *
-     * @return Collection
+     * @return array
      */
     public function getDestinatarios()
     {
         return $this->destinatarios;
-    }
-
-    /**
-     * Comprueba si la newsletter contiene el destinatario.
-     *
-     * @return Boolean
-     */
-    public function hasDestinatario(string $destinatario)
-    {
-        return $this->destinatarios->contains($destinatario);
-    }
-
-    /**
-     * Añadir destinatario.
-     *
-     * @param string $destinatario
-     */
-    public function addDestinatario(string $destinatario)
-    {
-        if (!$this->hasDestinatario($destinatario)) {
-            $this->destinatarios->add($destinatario);
-        }
-    }
-
-    /**
-     * Quitar destinatario.
-     *
-     * @param string $destinatario
-     */
-    public function removeDestinatario(string $destinatario)
-    {
-        $this->destinatarios->removeElement($destinatario);
     }
 
     /**
