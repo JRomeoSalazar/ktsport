@@ -504,6 +504,7 @@
         <!-- Newsletter -->
         <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
             <argument type="service" id="mailer" />
+            <argument type="service" id="templating" />
         </service>
 
         <service id="sylius.listener.newsletter_send" class="%sylius.listener.newsletter_send.class%">

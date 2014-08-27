@@ -26,9 +26,11 @@ class NewsletterType extends AbstractType
         );
 
         $destinatarios = array(
+            'jromeosalazar@gmail.com' => 'jromeosalazar@gmail.com',
             'roberto@email.com' => 'roberto@email.com',
             'jorge@email.com' => 'jorge@email.com',
-            'andres@email.com' => 'andres@email.com'
+            'andres@email.com' => 'andres@email.com',
+            'motionman@gmail.com' => 'motionman@gmail.com'
         );
 
         $builder->add('emisor', 'email', array('label' => 'sylius.form.newsletter.emisor'))

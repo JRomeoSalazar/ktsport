@@ -11,6 +11,8 @@
 
 namespace Sylius\Bundle\CoreBundle\Services;
 
+use Symfony\Component\Templating\EngineInterface;
+
 class NewsletterEmailManager
 {
     /**
@@ -19,13 +21,20 @@ class NewsletterEmailManager
     protected $mailer;
 
     /**
+     * @var EngineInterface
+     */
+    protected $templating;
+
+    /**
      * Constructor.
      *
-     * @param \Swift_Mailer $mailer
+     * @param \Swift_Mailer		$mailer
+     * @param EngineInterface	$templating
      */
-    public function __construct(\Swift_Mailer $mailer)
+    public function __construct(\Swift_Mailer $mailer, EngineInterface $templating)
     {
-        $this->mailer = $mailer;
+        $this->mailer 		= $mailer;
+        $this->templating 	= $templating;
     }
 
 	/**
@@ -37,6 +46,8 @@ class NewsletterEmailManager
 	{
 		$destinatarios = $newsletter->getDestinatarios();
 
+		$message = \Swift_Message::newInstance();
+
         $logo = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/logo.jpg'));
         $spacer = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/spacer.gif'));
         $facebook = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/facebook.png'));
@@ -44,12 +55,12 @@ class NewsletterEmailManager
         $twitter = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/twitter.png'));
         $youtube = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/youtube.png'));
 
-		$message = \Swift_Message::newInstance()
+		$message
 	        ->setSubject( $newsletter->getTitulo() )
 	        ->setFrom( $newsletter->getEmisor() )
 	        ->setTo( $destinatarios[0] )
 	        ->setBody(
-	            $this->renderView(
+	            $this->templating->render(
 	                'SyliusWebBundle:Backend/Newsletter/Template:newsletter.html.twig',
 	                array(
 	                	'logo' => $logo,
@@ -57,11 +68,14 @@ class NewsletterEmailManager
 	                	'facebook' => $facebook,
 	                	'linkedin' => $linkedin,
 	                	'twitter' => $twitter,
-	                	'youtube' => $youtube
+	                	'youtube' => $youtube,
+	                	'titulo' => $newsletter->getTitulo(),
+	                	'contenido' => $newsletter->getContenido()
 	                )
 	            )
 	        )
 	    ;
-	    $this->get('mailer')->send($message);
+
+	    $this->mailer->send($message);
 	}
 }
