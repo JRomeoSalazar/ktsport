@@ -389,6 +389,12 @@ sylius:
         logged_at: Entrada el
         version: Versión
     homepage:
+        buy: Comprar
+        follow:
+            facebook: Síguenos en Facebook
+            linkedin: Síguenos en LinkedIn
+            twitter: Síguenos en Twitter
+            youtube: Síguenos en YouTube
         splash:
             headline: Bienvenido a Sylius
             subheadline: Ecommerce moderno para Symfony2

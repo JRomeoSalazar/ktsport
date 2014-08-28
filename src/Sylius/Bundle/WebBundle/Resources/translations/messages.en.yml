@@ -330,6 +330,12 @@ sylius:
         logged_at: Logged at
         version: Version
     homepage:
+        buy: Buy
+        follow:
+            facebook: Follow us on Facebook
+            linkedin: Follow us on LinkedIn
+            twitter: Follow us on Twitter
+            youtube: Follow us on YouTube
         splash:
             headline: Welcome to Sylius
             subheadline: Modern ecommerce for Symfony2

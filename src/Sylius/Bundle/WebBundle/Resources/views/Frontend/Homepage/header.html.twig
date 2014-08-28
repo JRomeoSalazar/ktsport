@@ -30,10 +30,10 @@
 				<i class="icon-lock"></i> {{ 'sylius.account.login'|trans }}
 			</a>
 		{% endif %}
-		<a href="http://www.facebook.com/KTSPORT.ES" class="fc-webicon facebook" target="_blank" title="Síguenos en Facebook">Síguenos en Facebook</a>
-		<a href="http://twitter.com/ktsportes" class="fc-webicon twitter" target="_blank" title="Síguenos en Twitter">Síguenos en Twitter</a>
-		<a href="https://www.linkedin.com/profile/view?id=198469687" class="fc-webicon linkedin" target="_blank" title="Síguenos en LinkedIn">Síguenos en LinkedIn</a>
-		<a href="http://www.youtube.com/user/KTSPORTES" class="fc-webicon youtube" target="_blank" title="Síguenos en YouTube">Síguenos en YouTube</a>
+		<a href="http://www.facebook.com/KTSPORT.ES" class="fc-webicon facebook" target="_blank" title="{{ 'sylius.homepage.follow.facebook'|trans }}">{{ 'sylius.homepage.follow.facebook'|trans }}</a>
+		<a href="http://twitter.com/ktsportes" class="fc-webicon twitter" target="_blank" title="{{ 'sylius.homepage.follow.twitter'|trans }}">{{ 'sylius.homepage.follow.twitter'|trans }}</a>
+		<a href="https://www.linkedin.com/profile/view?id=198469687" class="fc-webicon linkedin" target="_blank" title="{{ 'sylius.homepage.follow.linkedin'|trans }}">{{ 'sylius.homepage.follow.linkedin'|trans }}</a>
+		<a href="http://www.youtube.com/user/KTSPORTES" class="fc-webicon youtube" target="_blank" title="{{ 'sylius.homepage.follow.youtube'|trans }}">{{ 'sylius.homepage.follow.youtube'|trans }}</a>
 	</div>
 	<div class="large-5 columns">
 		<div class="row collapse">
@@ -89,8 +89,8 @@
 						{% endif %}
 					{% endfor %}
 					<li class="has-form">
-						<a class="button radius boton-comprar" href="http://kttape.toptape.es" title="Comprar" target="_blank">
-							{% trans %}COMPRAR{% endtrans %}
+						<a class="button radius boton-comprar" href="http://kttape.toptape.es" title="{{ 'sylius.homepage.buy'|trans }}" target="_blank">
+							{{ 'sylius.homepage.buy'|trans|upper }}
 						</a>
 					</li>
 				</ul>
