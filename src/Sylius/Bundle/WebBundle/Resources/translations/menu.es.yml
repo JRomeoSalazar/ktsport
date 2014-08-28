@@ -51,6 +51,8 @@ sylius:
                 locales: Idiomas
                 new_order: Añadir nuevo pedido
                 new_promotion: Añadir nueva promoción
+                newsletters: Newsletters
+                newsletter_users: Usuarios de Newsletter
                 options: Administrar opciones de producto
                 orders: Pedidos en curso
                 pages: Páginas

@@ -1,0 +1,78 @@
+{% macro list(newsletters) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if newsletters|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ sylius_resource_sort('id', '#id') }}</th>
+            <th>{{ sylius_resource_sort('fecha', 'sylius.newsletter.fecha'|trans) }}</th>
+            <th>{{ sylius_resource_sort('mes', 'sylius.newsletter.mes'|trans) }}</th>
+            <th>{{ sylius_resource_sort('titulo', 'sylius.newsletter.titulo'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for newsletter in newsletters %}
+        <tr id="{{ newsletter.id }}">
+            <td class="id">
+                {{ newsletter.id }}
+            </td>
+            <td>
+                {{ newsletter.fecha|date('d-m-Y') }}
+            </td>
+            <td>
+                {{ _self.texto_mes(newsletter.mes) }}
+            </td>
+            <td>
+                <a href="{{ path('sylius_backend_newsletter_show', {'id': newsletter.id}) }}">{{ newsletter.titulo }}</a>
+            </td>
+            <td>
+                <div class="pull-right">
+                    {# buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) #}
+                    {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id})) }}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.newsletter.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}
+
+{% macro texto_mes(mes)%}
+
+{% if mes == 1 %}
+    Enero
+{% elseif mes == 2 %}
+    Febrero
+{% elseif mes == 3 %}
+    Marzo
+{% elseif mes == 4 %}
+    Abril
+{% elseif mes == 5 %}
+    Mayo
+{% elseif mes == 6 %}
+    Junio
+{% elseif mes == 7 %}
+    Julio
+{% elseif mes == 8 %}
+    Agosto
+{% elseif mes == 9 %}
+    Septiembre
+{% elseif mes == 10 %}
+    Octubre
+{% elseif mes == 11 %}
+    Noviembre
+{% elseif mes == 12 %}
+    Diciembre
+{% else %}
+    Enero
+{% endif %}
+
+{% endmacro %}

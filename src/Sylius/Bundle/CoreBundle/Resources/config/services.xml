@@ -44,6 +44,8 @@
         <parameter key="sylius.listener.restricted_zone.class">Sylius\Bundle\CoreBundle\EventListener\RestrictedZoneListener</parameter>
         <parameter key="sylius.listener.coupon_usage.class">Sylius\Bundle\CoreBundle\EventListener\CouponUsageListener</parameter>
         <parameter key="sylius.listener.order_user.class">Sylius\Bundle\CoreBundle\EventListener\OrderUserListener</parameter>
+        <parameter key="sylius.listener.newsletter_send.class">Sylius\Bundle\CoreBundle\EventListener\NewsletterSendListener</parameter>
+        <parameter key="sylius.newsletter.email_manager.class">Sylius\Bundle\CoreBundle\Services\NewsletterEmailManager</parameter>
 
         <parameter key="sylius.checkout_form.addressing.class">Sylius\Bundle\CoreBundle\Form\Type\Checkout\AddressingStepType</parameter>
         <parameter key="sylius.checkout_form.shipping.class">Sylius\Bundle\CoreBundle\Form\Type\Checkout\ShippingStepType</parameter>
@@ -54,6 +56,8 @@
         <parameter key="sylius.form.type.image.class">Sylius\Bundle\CoreBundle\Form\Type\ImageType</parameter>
         <parameter key="sylius.form.type.list.class">Sylius\Bundle\CoreBundle\Form\Type\ListType</parameter>
         <parameter key="sylius.form.type.descuento.class">Sylius\Bundle\CoreBundle\Form\Type\DescuentoType</parameter>
+        <parameter key="sylius.form.type.newsletter.class">Sylius\Bundle\CoreBundle\Form\Type\NewsletterType</parameter>
+        <parameter key="sylius.form.type.newsletter_user.class">Sylius\Bundle\CoreBundle\Form\Type\NewsletterUserType</parameter>
         <parameter key="sylius.model.descuento.class">Sylius\Bundle\CoreBundle\Model\Descuento</parameter>
         <parameter key="sylius.form.type.user_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\UserFilterType</parameter>
         <parameter key="sylius.form.type.product_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\ProductFilterType</parameter>
@@ -344,6 +348,9 @@
             <argument>%sylius.model.descuento.class%</argument>
             <tag name="form.type" alias="sylius_descuento" />
         </service>
+        <service id="sylius.form.type.newsletter_user" class="%sylius.form.type.newsletter_user.class%">
+            <tag name="form.type" alias="sylius_newsletter_user" />
+        </service>
 
         <service id="sylius.listener.image_upload" class="%sylius.listener.image_upload.class%">
             <argument type="service" id="sylius.image_uploader" />
@@ -489,6 +496,21 @@
             <tag name="monolog.logger" channel="security" />
             <argument type="service" id="service_container" />
             <argument type="service" id="router" />
+        </service>
+
+        <!-- Newsletter -->
+        <service id="sylius.form.type.newsletter" class="%sylius.form.type.newsletter.class%">
+            <argument type="service" id="sylius.repository.newsletter_user" />
+            <tag name="form.type" alias="sylius_newsletter" />
+        </service>
+        <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="templating" />
+        </service>
+
+        <service id="sylius.listener.newsletter_send" class="%sylius.listener.newsletter_send.class%">
+            <argument type="service" id="sylius.newsletter.email_manager" />
+            <tag name="kernel.event_listener" event="sylius.newsletter.post_create" method="sendEmail" />
         </service>
 
         <!-- Services -->

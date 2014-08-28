@@ -142,6 +142,10 @@ sylius:
         inventory:
             index: Inventario
         new: Nuevo
+        newsletter:
+            index: Newsletter
+        newsletter_user:
+            index: Usuario registrado de newsletter
         option:
             index: Opciones de producto
         order:
@@ -406,6 +410,33 @@ sylius:
         frontend_keywords: sylius, ecommerce, symfony2, tienda, carrito, webshop
         frontend_title: Sylius, ecommerce moderno para Symfony2
     newest: Nuevos productos
+    newsletter:
+        contenido: Contenido
+        create: Enviar nueva newsletter
+        create_header: Crear y enviar nueva newsletter
+        destinatarios: Destinatarios
+        emisor: Email del emisor
+        fecha: Creada el
+        id: ID
+        index_header: Newsletters
+        manage: Gestionar newsletters
+        mes: Mes
+        no_results: No hay newsletters para mostrar.
+        nombre_emisor: Nombre del emisor
+        show_header: Detalles de la newsletter
+        titulo: Título
+        update_header: Editar newsletter
+    newsletter_user:
+        create: Registrar usuario en la newsletter
+        create_header: Registrar nuevos usuarios en la newsletter
+        email: Correo electrónico
+        id: ID
+        index_header: Usuarios de la newsletter
+        manage: Gestionar usuarios de la newsletter
+        name: Nombre
+        no_results: No hay usuarios de la newsletter para mostrar.
+        show_header: Detalles del usuario de la newsletter
+        update_header: Editar usuario de la newsletter
     no: No
     option:
         create: Crear opción

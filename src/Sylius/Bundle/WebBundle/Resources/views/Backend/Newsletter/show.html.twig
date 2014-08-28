@@ -1,0 +1,64 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% from 'SyliusWebBundle:Backend/Newsletter:macros.html.twig' import texto_mes %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('sylius_backend_newsletter_index') }}">{{ 'sylius.breadcrumb.newsletter.index'|trans }}</a></li>
+    <li>{{ newsletter.titulo }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('sylius_backend_newsletter_index'), 'sylius.newsletter.manage'|trans) }}
+        {# buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) #}
+        {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.newsletter.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td colspan="2">#{{ newsletter.id }} {{ newsletter.titulo }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.emisor'|trans }}</strong></td>
+            <td>{{ newsletter.emisor }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.nombre_emisor'|trans }}</strong></td>
+            <td>{{ newsletter.nombreEmisor }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.destinatarios'|trans }}</strong></td>
+            <td>
+                <ul>
+                    {% for destinatario in newsletter.destinatarios %}
+                    <li>{{ destinatario }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.fecha'|trans }}</strong></td>
+            <td>{{ newsletter.fecha|date('d-m-Y') }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.mes'|trans }}</strong></td>
+            <td>{{ texto_mes(newsletter.mes) }}</td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.contenido'|trans }}</strong></td>
+            <td>{{ newsletter.contenido|raw }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

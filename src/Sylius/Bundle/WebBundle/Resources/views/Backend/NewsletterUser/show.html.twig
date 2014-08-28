@@ -1,0 +1,37 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('sylius_backend_newsletter_user_index') }}">{{ 'sylius.breadcrumb.newsletter_user.index'|trans }}</a></li>
+    <li>{{ newsletter_user.email }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('sylius_backend_newsletter_user_index'), 'sylius.newsletter_user.manage'|trans) }}
+        {{ buttons.edit(path('sylius_backend_newsletter_user_update', {'id': newsletter_user.id})) }}
+        {{ buttons.delete(path('sylius_backend_newsletter_user_delete', {'id': newsletter_user.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.newsletter_user.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ newsletter_user.id }} {{ newsletter_user.email }}</th>
+        </tr>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter_user.name'|trans }}</strong></td>
+            <td>{{ newsletter_user.name }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

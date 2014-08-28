@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+>
+  <entity name="Sylius\Bundle\CoreBundle\Model\Newsletter" table="sylius_newsletter">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="emisor" type="string" column="emisor" />
+    <field name="nombreEmisor" type="string" column="nombreEmisor" nullable="true" />
+    <field name="destinatarios" type="array" column="destinatarios" />
+    <field name="fecha" type="datetime" column="fecha">
+      <gedmo:timestampable on="create"/>
+    </field>
+    <field name="mes" type="string" column="mes" />
+    <field name="titulo" type="string" column="titulo" />
+    <field name="contenido" type="text" column="contenido" />
+  </entity>
+</doctrine-mapping>
