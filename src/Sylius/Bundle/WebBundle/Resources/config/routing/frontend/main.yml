@@ -1,7 +1,6 @@
 ##
 # KTSport
 ##
-
 ktsport_index:
     pattern:  /
     defaults: { _controller: sylius.controller.frontend.homepage:indexAction }

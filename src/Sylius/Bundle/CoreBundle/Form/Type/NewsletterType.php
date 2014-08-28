@@ -2,12 +2,30 @@
 // src/Sylius/Bundle/CoreBundle/Form/Type/NewsletterUserType.php
 namespace Sylius\Bundle\CoreBundle\Form\Type;
 
+use Sylius\Bundle\ResourceBundle\Model\RepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class NewsletterType extends AbstractType
 {
+    /**
+     * Newsletter user repository.
+     *
+     * @var RepositoryInterface
+     */
+    private $newsletterUserRepository;
+
+    /**
+     * Constructor.
+     *
+     * @param RepositoryInterface   $newsletterUserRepository
+     */
+    public function __construct(RepositoryInterface $newsletterUserRepository)
+    {
+        $this->newsletterUserRepository = $newsletterUserRepository;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $mes = array(
@@ -25,15 +43,17 @@ class NewsletterType extends AbstractType
             12 => 'Diciembre'
         );
 
-        $destinatarios = array(
-            'jromeosalazar@gmail.com' => 'jromeosalazar@gmail.com',
-            'roberto@email.com' => 'roberto@email.com',
-            'jorge@email.com' => 'jorge@email.com',
-            'andres@email.com' => 'andres@email.com',
-            'motionman@gmail.com' => 'motionman@gmail.com'
-        );
+        $newsletterUsers = $this->newsletterUserRepository->findAll();
+        $destinatarios = array();
+        foreach ($newsletterUsers as $newsletterUser) {
+            $destinatarios[$newsletterUser->getEmail()] = $newsletterUser->getEmail();
+        }
 
         $builder->add('emisor', 'email', array('label' => 'sylius.form.newsletter.emisor'))
+                ->add('nombre_emisor', null, array(
+                    'label' => 'sylius.form.newsletter.nombre_emisor',
+                    'required' => false
+                ))
                 ->add('destinatarios', 'choice', array(
                     'label' => 'sylius.form.newsletter.destinatarios',
                     'choices' => $destinatarios,

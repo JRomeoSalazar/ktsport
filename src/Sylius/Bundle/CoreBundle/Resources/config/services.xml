@@ -348,9 +348,6 @@
             <argument>%sylius.model.descuento.class%</argument>
             <tag name="form.type" alias="sylius_descuento" />
         </service>
-        <service id="sylius.form.type.newsletter" class="%sylius.form.type.newsletter.class%">
-            <tag name="form.type" alias="sylius_newsletter" />
-        </service>
         <service id="sylius.form.type.newsletter_user" class="%sylius.form.type.newsletter_user.class%">
             <tag name="form.type" alias="sylius_newsletter_user" />
         </service>
@@ -502,6 +499,10 @@
         </service>
 
         <!-- Newsletter -->
+        <service id="sylius.form.type.newsletter" class="%sylius.form.type.newsletter.class%">
+            <argument type="service" id="sylius.repository.newsletter_user" />
+            <tag name="form.type" alias="sylius_newsletter" />
+        </service>
         <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
             <argument type="service" id="mailer" />
             <argument type="service" id="templating" />

@@ -20,6 +20,11 @@ class Newsletter
     protected $emisor;
 
     /**
+     * @var string $emisor
+     */
+    protected $nombreEmisor;
+
+    /**
      * @var array $destinatarios
      */
     protected $destinatarios;
@@ -82,6 +87,27 @@ class Newsletter
     public function getEmisor()
     {
         return $this->emisor;
+    }
+
+    /**
+     * Set the nombreEmisor.
+     *
+     * @param string $nombreEmisor
+     * @return Newsletter
+     */
+    public function setNombreEmisor($nombreEmisor)
+    {
+        $this->nombreEmisor = $nombreEmisor;
+    }
+
+    /**
+     * Get nombreEmisor.
+     *
+     * @return string
+     */
+    public function getNombreEmisor()
+    {
+        return $this->nombreEmisor;
     }
 
     /**

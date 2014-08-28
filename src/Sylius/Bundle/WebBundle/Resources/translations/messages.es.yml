@@ -415,13 +415,14 @@ sylius:
         create: Enviar nueva newsletter
         create_header: Crear y enviar nueva newsletter
         destinatarios: Destinatarios
-        emisor: Emisor
+        emisor: Email del emisor
         fecha: Creada el
         id: ID
         index_header: Newsletters
         manage: Gestionar newsletters
         mes: Mes
         no_results: No hay newsletters para mostrar.
+        nombre_emisor: Nombre del emisor
         show_header: Detalles de la newsletter
         titulo: Título
         update_header: Editar newsletter

@@ -34,8 +34,9 @@ sylius:
         newsletter:
             contenido: Contenido
             destinatarios: Destinatarios
-            emisor: Email
+            emisor: Email del emisor
             mes: Mes
+            nombre_emisor: Nombre del emisor
             titulo: Título
         newsletter_user:
             email: Email

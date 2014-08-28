@@ -28,13 +28,13 @@ class NewsletterEmailManager
     /**
      * Constructor.
      *
-     * @param \Swift_Mailer		$mailer
-     * @param EngineInterface	$templating
+     * @param \Swift_Mailer			$mailer
+     * @param EngineInterface		$templating
      */
     public function __construct(\Swift_Mailer $mailer, EngineInterface $templating)
     {
-        $this->mailer 		= $mailer;
-        $this->templating 	= $templating;
+        $this->mailer 					= $mailer;
+        $this->templating 				= $templating;
     }
 
 	/**
@@ -57,8 +57,7 @@ class NewsletterEmailManager
 
 		$message
 	        ->setSubject( $newsletter->getTitulo() )
-	        ->setFrom( $newsletter->getEmisor() )
-	        ->setTo( $destinatarios[0] )
+	        ->setBcc( $destinatarios )
 	        ->setBody(
 	            $this->templating->render(
 	                'SyliusWebBundle:Backend/Newsletter/Template:newsletter.html.twig',
@@ -72,9 +71,17 @@ class NewsletterEmailManager
 	                	'titulo' => $newsletter->getTitulo(),
 	                	'contenido' => $newsletter->getContenido()
 	                )
-	            )
+	            ),
+            	'text/html'
 	        )
 	    ;
+
+	    if ($newsletter->getNombreEmisor() != null) {
+	        $message->setFrom( array($newsletter->getEmisor() => $newsletter->getNombreEmisor()) );
+	    }
+	    else {
+	    	$message->setFrom( $newsletter->getEmisor() );
+	    }
 
 	    $this->mailer->send($message);
 	}
