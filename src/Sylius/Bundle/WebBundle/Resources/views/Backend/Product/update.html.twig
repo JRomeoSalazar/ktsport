@@ -10,6 +10,10 @@
 %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+    <script type="text/javascript">
+        var uri = "{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.baseUrl ~ '/uploaded/' }}";
+    </script>
+    {{ tinymce_init() }}
 {% endblock %}
 
 {% block topbar %}

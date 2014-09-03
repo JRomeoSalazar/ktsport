@@ -14,6 +14,7 @@ www/css/*
 www/js/*
 www/assets/compiled/*
 www/media/*
+www/uploaded/*
 
 bin/behat
 bin/doctrine*
