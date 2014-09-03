@@ -21,15 +21,9 @@
 				<i class="icon-briefcase"></i> {{ 'sylius.admin'|trans }}
 			</a>
 		{% endif %}
-		{% if is_granted('ROLE_USER') %}
-			<a class="account" href="{{ path('sylius_account_homepage') }}" title="{{ 'sylius.account.self'|trans }}">
-				<i class="icon-user"></i> {{ 'sylius.account.self'|trans }}
-			</a>
-		{% else %}
-			<a class="account" href="{{ path('fos_user_security_login') }}" title="{{ 'sylius.account.login'|trans }}">
-				<i class="icon-lock"></i> {{ 'sylius.account.login'|trans }}
-			</a>
-		{% endif %}
+		<a class="account" href="{{ path('ktsport_newsletter_register') }}" title="{{ 'sylius.account.login'|trans }}">
+			<i class="icon-envelope"></i> {{ 'sylius.newsletter.register.0'|trans }}
+		</a>
 		<a href="http://www.facebook.com/KTSPORT.ES" class="fc-webicon facebook" target="_blank" title="{{ 'sylius.homepage.follow.facebook'|trans }}">{{ 'sylius.homepage.follow.facebook'|trans }}</a>
 		<a href="http://twitter.com/ktsportes" class="fc-webicon twitter" target="_blank" title="{{ 'sylius.homepage.follow.twitter'|trans }}">{{ 'sylius.homepage.follow.twitter'|trans }}</a>
 		<a href="https://www.linkedin.com/profile/view?id=198469687" class="fc-webicon linkedin" target="_blank" title="{{ 'sylius.homepage.follow.linkedin'|trans }}">{{ 'sylius.homepage.follow.linkedin'|trans }}</a>

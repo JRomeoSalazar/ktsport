@@ -38,11 +38,11 @@
             <td>{{ newsletter.nombreEmisor }}</td>
         </tr>
         <tr>
-            <td><strong>{{ 'sylius.newsletter.destinatarios'|trans }}</strong></td>
+            <td><strong>{{ 'sylius.newsletter.provinces'|trans }}</strong></td>
             <td>
                 <ul>
-                    {% for destinatario in newsletter.destinatarios %}
-                    <li>{{ destinatario }}</li>
+                    {% for province in newsletter.provinces %}
+                    <li>{{ province }}</li>
                     {% endfor %}
                 </ul>
             </td>

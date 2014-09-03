@@ -1,0 +1,35 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+ktsport_newsletter_unsubscribe:
+    pattern: /unsubscribe/{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.frontend.homepage:unsubscribeAction
+
+ktsport_newsletter_unsubscribe_confirm:
+    pattern: /unsubscribe-confirm/{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.frontend.homepage:deleteNewsletterUserAction
+
+ktsport_newsletter_unsubscribe_cancel:
+    pattern:  /unsubscribe-cancel
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: SyliusWebBundle:Frontend/Homepage/Newsletter:unsubscribeCancel.html.twig
+
+ktsport_newsletter_register:
+    pattern: /register/new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.newsletter_user:createAction
+        _sylius:
+            template: SyliusWebBundle:Frontend/Homepage/Newsletter:register.html.twig
+            redirect: ktsport_newsletter_register_success
+
+ktsport_newsletter_register_success:
+    pattern:  /register/success
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: SyliusWebBundle:Frontend/Homepage/Newsletter:registerSuccess.html.twig

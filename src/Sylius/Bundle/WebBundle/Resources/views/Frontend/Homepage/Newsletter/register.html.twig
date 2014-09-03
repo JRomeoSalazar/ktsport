@@ -1,0 +1,20 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/Newsletter/unsubscribe.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.newsletter.register.0'|trans }}
+{% endblock %}
+
+{% block content %}
+	<div class="row collapse contact">
+		<div class="large-12 small-12 columns">
+			<h2>{{ 'sylius.newsletter.register.0'|trans|upper }}</h2>
+			<form action="{{ path('ktsport_newsletter_register') }}" method="post" class="form-horizontal" novalidate>
+			    {% include 'SyliusWebBundle:Backend/NewsletterUser:_form.html.twig' %}
+			    <button type="submit" class="button medium success radius right">
+	                <i class="icon-envelope"></i> {{ 'sylius.form.registration.submit'|trans }}
+	            </button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

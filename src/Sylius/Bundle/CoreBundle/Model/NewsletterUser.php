@@ -3,6 +3,7 @@
 namespace Sylius\Bundle\CoreBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Sylius\Bundle\AddressingBundle\Model\ProvinceInterface;
 
 /**
  * NewsletterUser
@@ -24,6 +25,19 @@ class NewsletterUser
      */
     protected $name;
 
+    /**
+     * @var integer $province
+     */
+    protected $province;
+
+    /**
+     * String to be displayed
+     */
+    public function __toString()
+    {
+        if ($this->name === null) return $this->email;
+        else return $this->name;
+    }
 
     /**
      * Get id
@@ -75,5 +89,25 @@ class NewsletterUser
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set the province.
+     *
+     * @param ProvinceInterface $province
+     */
+    public function setProvince(ProvinceInterface $province = null)
+    {
+        $this->province = $province;
+    }
+
+    /**
+     * Get province.
+     *
+     * @return ProvinceInterface
+     */
+    public function getProvince()
+    {
+        return $this->province;
     }
 }

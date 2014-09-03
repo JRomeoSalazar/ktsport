@@ -503,9 +503,11 @@
             <argument type="service" id="sylius.repository.newsletter_user" />
             <tag name="form.type" alias="sylius_newsletter" />
         </service>
+
         <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
             <argument type="service" id="mailer" />
             <argument type="service" id="templating" />
+            <argument type="service" id="sylius.repository.newsletter_user" />
         </service>
 
         <service id="sylius.listener.newsletter_send" class="%sylius.listener.newsletter_send.class%">

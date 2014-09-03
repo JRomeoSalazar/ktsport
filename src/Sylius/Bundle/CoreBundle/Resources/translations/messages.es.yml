@@ -33,14 +33,16 @@ sylius:
             file: Imagen
         newsletter:
             contenido: Contenido
-            destinatarios: Destinatarios
             emisor: Email del emisor
+            enviarATodos: Enviar a todos
             mes: Mes
             nombre_emisor: Nombre del emisor
+            provinces: Provincias
             titulo: Título
         newsletter_user:
             email: Email
             name: Nombre
+            province: Provincia
         order:
             comentario: Comentarios:
         order_filter:

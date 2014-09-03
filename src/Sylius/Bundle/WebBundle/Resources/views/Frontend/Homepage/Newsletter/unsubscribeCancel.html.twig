@@ -1,0 +1,18 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/Newsletter/unsubscribe.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.newsletter.unsubscribe.0'|trans }}
+{% endblock %}
+
+{% block content %}
+	<div class="row collapse contact">
+		<div class="large-12 small-12 columns">
+			<h2>{{ 'sylius.newsletter.unsubscribe.0'|trans|upper }}</h2>
+			<p>{{ 'sylius.newsletter.unsubscribe.cancel.message'|trans }}</p>
+			<a class="button tiny radius right" id="close" href="#" onclick="window.close();" title="cerrar">
+			    {{ 'sylius.frontend.close'|trans }}
+			</a>
+		</div>
+	</div>
+{% endblock %}

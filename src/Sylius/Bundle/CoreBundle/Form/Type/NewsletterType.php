@@ -43,20 +43,15 @@ class NewsletterType extends AbstractType
             12 => 'Diciembre'
         );
 
-        $newsletterUsers = $this->newsletterUserRepository->findAll();
-        $destinatarios = array();
-        foreach ($newsletterUsers as $newsletterUser) {
-            $destinatarios[$newsletterUser->getEmail()] = $newsletterUser->getEmail();
-        }
-
         $builder->add('emisor', 'email', array('label' => 'sylius.form.newsletter.emisor'))
                 ->add('nombre_emisor', null, array(
                     'label' => 'sylius.form.newsletter.nombre_emisor',
                     'required' => false
                 ))
-                ->add('destinatarios', 'choice', array(
-                    'label' => 'sylius.form.newsletter.destinatarios',
-                    'choices' => $destinatarios,
+                ->add('enviarATodos', null, array('label' => 'sylius.form.newsletter.enviarATodos'))
+                ->add('provinces', 'entity', array(
+                    'label' => 'sylius.form.newsletter.provinces',
+                    'class' => 'Sylius\Bundle\AddressingBundle\Model\Province',
                     'expanded' => false,
                     'multiple' => true
                 ))

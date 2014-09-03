@@ -14,6 +14,12 @@ class NewsletterUserType extends AbstractType
                 ->add('name', null, array(
                     'label' => 'sylius.form.newsletter_user.name',
                     'required' => false,
+                ))
+                ->add('province', 'entity', array(
+                    'label' => 'sylius.form.newsletter_user.province',
+                    'class' => 'Sylius\Bundle\AddressingBundle\Model\Province',
+                    'expanded' => false,
+                    'multiple' => false
                 ));
     }
     

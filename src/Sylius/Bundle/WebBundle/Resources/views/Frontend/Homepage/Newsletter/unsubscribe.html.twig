@@ -1,0 +1,25 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/Newsletter/unsubscribe.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.newsletter.unsubscribe.0'|trans }}
+{% endblock %}
+
+{% block content %}
+	<div class="row collapse contact">
+		<div class="large-12 small-12 columns">
+			<h2>{{ 'sylius.newsletter.unsubscribe.0'|trans|upper }}</h2>
+			{% if newsletterUser.name is null %}
+				<p>{{ 'sylius.newsletter.unsubscribe.message'|trans }}</p>
+			{% else %}
+				<p>{{ 'sylius.newsletter.unsubscribe.message_name'|trans({'%name%': newsletterUser.name}) }}</p>
+			{% endif %}
+			<form action="{{ path('ktsport_newsletter_unsubscribe_confirm', {id : newsletterUser.id}) }}" method="get" class="form-horizontal" novalidate>
+			    <a href="{{ path('ktsport_newsletter_unsubscribe_cancel') }}" class="small radius primary button" title="{{ 'sylius.newsletter.unsubscribe.cancel.0'|trans }}">
+			    	{{ 'sylius.newsletter.unsubscribe.cancel.0'|trans }}
+			    </a>
+			    <input type="submit" value="{{ 'sylius.newsletter.unsubscribe.confirm.0'|trans }}" class="small radius alert button" title="{{ 'sylius.newsletter.unsubscribe.confirm.0'|trans }}">
+			</form>
+		</div>
+	</div>
+{% endblock %}

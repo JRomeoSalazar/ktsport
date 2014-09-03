@@ -31,7 +31,7 @@
                     <p align="right" style="text-align:right">
                       <strong>
                         <span style="font-family:'Trebuchet MS','sans-serif'; color:white">
-                          Newsletter Julio 2014
+                          Newsletter {{ mes }} {{ 'now'|date('Y') }}
                         </span>
                       </strong>
                       <span style="font-family:'Trebuchet MS','sans-serif'; color:white">
@@ -75,7 +75,7 @@
                   <td style="background:#373737; padding:0cm 10px 0cm 0cm">
                     <p align="right" style="text-align:right">
                       <span style="color:#cccccc; font-family:'Trebuchet MS','sans-serif'">
-                        Sigue a KTSport Espa&ntilde;a:
+                        Síguenos en:
                       </span>
                     </p>
                   </td>
@@ -141,7 +141,7 @@
       KTSport, 2014
     </p>
     <p style="text-align:center; font-size:9.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
-      Para darte de baja de nuestra newsletter, haz click <a href="#" title="Haz click aquí si no puedes leer el correo correctamente">aqu&iacute;</a>
+      Para darte de baja de nuestra newsletter, haz click <a href="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ path('ktsport_newsletter_unsubscribe', {'id': id}) }}" title="Haz click aquí para darte de baja de nuestra newsletter">aqu&iacute;</a>
     </p>
   </div>
 </body>

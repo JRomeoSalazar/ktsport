@@ -2,6 +2,8 @@
 
 namespace Sylius\Bundle\CoreBundle\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,11 +27,6 @@ class Newsletter
     protected $nombreEmisor;
 
     /**
-     * @var array $destinatarios
-     */
-    protected $destinatarios;
-
-    /**
      * @var \DateTime $fecha
      */
     protected $fecha;
@@ -50,12 +47,24 @@ class Newsletter
     protected $contenido;
 
     /**
+     * @var Collection
+     */
+    protected $provinces;
+
+    /**
+     * @var boolean
+     */
+    protected $enviarATodos;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
         $this->fecha = new \DateTime();
         $this->mes = date('n');
+        $this->provinces = new ArrayCollection();
+        $this->enviarATodos = false;
     }
 
     /**
@@ -108,27 +117,6 @@ class Newsletter
     public function getNombreEmisor()
     {
         return $this->nombreEmisor;
-    }
-
-    /**
-     * Set destinatarios.
-     *
-     * @param array $destinatarios
-     * @return Newsletter
-     */
-    public function setDestinatarios($destinatarios)
-    {
-        $this->destinatarios = $destinatarios;
-    }
-
-    /**
-     * Get destinatarios.
-     *
-     * @return array
-     */
-    public function getDestinatarios()
-    {
-        return $this->destinatarios;
     }
 
     /**
@@ -213,5 +201,47 @@ class Newsletter
     public function getContenido()
     {
         return $this->contenido;
+    }
+
+    /**
+     * Set provinces.
+     *
+     * @param Collection $provinces
+     * @return Newsletter
+     */
+    public function setProvinces($provinces)
+    {
+        $this->provinces = $provinces;
+    }
+
+    /**
+     * Get provinces.
+     *
+     * @return Collection
+     */
+    public function getProvinces()
+    {
+        return $this->provinces;
+    }
+
+    /**
+     * Set the enviarATodos.
+     *
+     * @param boolean $enviarATodos
+     * @return Newsletter
+     */
+    public function setEnviarATodos($enviarATodos)
+    {
+        $this->enviarATodos = $enviarATodos;
+    }
+
+    /**
+     * Get enviarATodos.
+     *
+     * @return boolean
+     */
+    public function getEnviarATodos()
+    {
+        return $this->enviarATodos;
     }
 }

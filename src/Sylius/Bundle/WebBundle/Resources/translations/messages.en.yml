@@ -367,6 +367,22 @@ sylius:
         frontend_title: Sylius, modern ecommerce for Symfony2
     na: N/A
     newest: Newest products
+    newsletter:
+        0: Newsletter
+        register:
+            0: Register Newsletter
+            back: Back
+            success: Registration to newsletter was successful.
+        unsubscribe:
+            0: Unsubscribe Newsletter
+            cancel:
+                0: Cancel
+                message: Thank you for your trust, you will continue receiving our newsletter.
+            confirm:
+                0: Confirm
+                message: Su baja de la newsletter ha sido tramitada.
+            message: Are you sure you want to unsubscribe of our newsletter?
+            message_name: Hello, %name%, Are you sure you want to unsubscribe of our newsletter?
     no: no
     no_results: sylius.no_results
     option:

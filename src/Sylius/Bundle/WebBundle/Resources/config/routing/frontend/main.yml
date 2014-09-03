@@ -62,3 +62,7 @@ ktsport_disclaimer:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: SyliusWebBundle:Frontend/Homepage:disclaimer.html.twig
+
+ktsport_newsletter:
+    resource: @SyliusWebBundle/Resources/config/routing/frontend/newsletter/main.yml
+    prefix:  /newsletter

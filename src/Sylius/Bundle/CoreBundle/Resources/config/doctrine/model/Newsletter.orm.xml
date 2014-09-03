@@ -9,12 +9,22 @@
     </id>
     <field name="emisor" type="string" column="emisor" />
     <field name="nombreEmisor" type="string" column="nombreEmisor" nullable="true" />
-    <field name="destinatarios" type="array" column="destinatarios" />
+    <many-to-many field="provinces" inversed-by="newsletters" target-entity="Sylius\Bundle\AddressingBundle\Model\ProvinceInterface">
+      <join-table name="sylius_newsletter_province">
+        <join-columns>
+          <join-column name="newsletter_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="province_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
     <field name="fecha" type="datetime" column="fecha">
       <gedmo:timestampable on="create"/>
     </field>
     <field name="mes" type="string" column="mes" />
     <field name="titulo" type="string" column="titulo" />
     <field name="contenido" type="text" column="contenido" />
+    <field name="enviarATodos" type="boolean" column="enviarATodos" />
   </entity>
 </doctrine-mapping>

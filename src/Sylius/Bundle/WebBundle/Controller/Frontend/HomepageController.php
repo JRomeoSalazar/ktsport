@@ -6,6 +6,28 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class HomepageController extends Controller
 {
+    /***************************/
+    /******* NEWSLETTER ********/
+    public function unsubscribeAction($id)
+    {
+        $newsletterUser = $this->get('sylius.repository.newsletter_user')->find($id);
+        return $this->render('SyliusWebBundle:Frontend/Homepage/Newsletter:unsubscribe.html.twig', array('newsletterUser' => $newsletterUser));
+    }
+
+    public function deleteNewsletterUserAction($id)
+    {
+        if (!$id) throw $this->createNotFoundException('Debes introducir un id válido.');
+        
+        $user = $this->get('sylius.repository.newsletter_user')->find($id);
+
+        if ($user === null) throw $this->createNotFoundException('Usuario de newsletter no encontrado');
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        return $this->render('SyliusWebBundle:Frontend/Homepage/Newsletter:unsubscribeConfirmed.html.twig');
+    }
 
     /***************************/
     /********** SITE ***********/

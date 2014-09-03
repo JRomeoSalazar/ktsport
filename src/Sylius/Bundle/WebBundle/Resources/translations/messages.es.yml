@@ -417,10 +417,11 @@ sylius:
         frontend_title: Sylius, ecommerce moderno para Symfony2
     newest: Nuevos productos
     newsletter:
+        0: Newsletter
         contenido: Contenido
         create: Enviar nueva newsletter
         create_header: Crear y enviar nueva newsletter
-        destinatarios: Destinatarios
+        provinces: Provincias
         emisor: Email del emisor
         fecha: Creada el
         id: ID
@@ -429,8 +430,22 @@ sylius:
         mes: Mes
         no_results: No hay newsletters para mostrar.
         nombre_emisor: Nombre del emisor
+        register:
+            0: Alta Newsletter
+            back: Volver
+            success: Alta de newsletter realizada correctamente.
         show_header: Detalles de la newsletter
         titulo: Título
+        unsubscribe:
+            0: Baja de newsletter
+            cancel:
+                0: Cancelar
+                message: Gracias por su confianza, continuará recibiendo nuestra newsletter.
+            confirm:
+                0: Confirmar
+                message: Su baja de la newsletter ha sido tramitada.
+            message: ¿Está seguro que desea darse de baja de nuestra newsletter?
+            message_name: Hola, %name% ¿Está seguro que desea darse de baja de nuestra newsletter?
         update_header: Editar newsletter
     newsletter_user:
         create: Registrar usuario en la newsletter
@@ -441,6 +456,7 @@ sylius:
         manage: Gestionar usuarios de la newsletter
         name: Nombre
         no_results: No hay usuarios de la newsletter para mostrar.
+        province: Provincia
         show_header: Detalles del usuario de la newsletter
         update_header: Editar usuario de la newsletter
     no: No

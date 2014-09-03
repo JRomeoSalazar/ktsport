@@ -23,6 +23,15 @@
         <many-to-one field="country" target-entity="Sylius\Bundle\AddressingBundle\Model\CountryInterface" inversed-by="provinces">
             <join-column name="country_id" referenced-column-name="id" />
         </many-to-one>
+
+
+    	<many-to-many field="newsletters" mapped-by="provinces" target-entity="Sylius\Bundle\CoreBundle\Model\Newsletter"/>
+
+        <one-to-many field="newsletterUsers" target-entity="Sylius\Bundle\CoreBundle\Model\NewsletterUser" mapped-by="province">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </mapped-superclass>
 
 </doctrine-mapping>

@@ -1,0 +1,18 @@
+{# src/Sylius/Bundle/WebBundle/Resources/views/Frontend/Homepage/Newsletter/unsubscribe.html.twig #}
+{% extends 'SyliusWebBundle:Frontend:layout.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.newsletter.register.0'|trans }}
+{% endblock %}
+
+{% block content %}
+	<div class="row collapse contact">
+		<div class="large-12 small-12 columns">
+			<h2>{{ 'sylius.newsletter.register.0'|trans|upper }}</h2>
+			<p>{{ 'sylius.newsletter.register.success'|trans }}</p>
+			<a class="button small radius right primary" href="{{ path('ktsport_index') }}" title="{{ 'sylius.newsletter.register.back'|trans }}">
+			    {{ 'sylius.newsletter.register.back'|trans }}
+			</a>
+		</div>
+	</div>
+{% endblock %}

@@ -184,9 +184,9 @@
                 <option name="message">sylius.newsletter.emisor.email</option>
             </constraint>
         </property>
-        <property name="destinatarios">
+        <property name="provinces">
             <constraint name="NotBlank">
-                <option name="message">sylius.newsletter.destinatarios.not_blank</option>
+                <option name="message">sylius.newsletter.provinces.not_blank</option>
             </constraint>
         </property>
         <property name="titulo">
