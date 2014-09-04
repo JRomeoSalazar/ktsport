@@ -21,7 +21,7 @@
                       <span style="font-size:9.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
                         <a href="http://www.ktsport.es" title="KTSport"  target="_blank">
                           <span style="text-decoration:none">
-                            <img src="{{ logo }}" border="0" width="450" height="120" alt="KTSport Espa&ntilde;a">
+                            <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/logo.jpg') }}" border="0" width="450" height="120" alt="KTSport Espa&ntilde;a">
                           </span>
                         </a>
                       </span>
@@ -49,7 +49,7 @@
                   <td width="10" style="width:7.5pt; background:#f47b20; padding:0cm 0cm 0cm 0cm">
                     <p align="right" style="text-align:right; margin:0px; width:7.5pt">
                       <span style="font-family:'Trebuchet MS','sans-serif'; color:#666666">
-                        <img src="{{ spacer }}" border="0" width="10" height="100" alt="Espaciador">
+                        <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/spacer.gif') }}" border="0" width="10" height="100" alt="Espaciador">
                       </span>
                     </p>
                   </td>
@@ -62,7 +62,7 @@
           <td style="padding:0cm 0cm 0cm 0cm; height:7.5pt">
             <p style="margin:0px; max-height:7.5pt">
               <span style="font-size:9.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
-                <img src="{{ spacer }}" border="0" width="240" height="10" alt="Espaciador">
+                <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/spacer.gif') }}" border="0" width="240" height="10" alt="Espaciador">
               </span>
             </p>
           </td>
@@ -80,13 +80,13 @@
                     </p>
                   </td>
                   <td width="150" style="width:112.5pt; background:#373737; padding: 0cm 0cm 0cm 0cm">
-                    <a href="https://www.facebook.com/KTSPORT.ES" title="S&iacute;guenos en Facebook" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ facebook }}')">
+                    <a href="https://www.facebook.com/KTSPORT.ES" title="S&iacute;guenos en Facebook" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/facebook.png') }}')">
                     </a>
-                    <a href="https://twitter.com/KTSPORTES" title="S&iacute;guenos en Twitter" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ twitter }}')">
+                    <a href="https://twitter.com/KTSPORTES" title="S&iacute;guenos en Twitter" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/twitter.png') }}')">
                     </a>
-                    <a href="https://www.linkedin.com/profile/view?id=198469687" title="S&iacute;guenos en LinkedIn" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ linkedin }}')">
+                    <a href="https://www.linkedin.com/profile/view?id=198469687" title="S&iacute;guenos en LinkedIn" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/linkedin.png') }}')">
                     </a>
-                    <a href="https://www.youtube.com/user/KTSPORTES" title="S&iacute;guenos en YouTube" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ youtube }}')">
+                    <a href="https://www.youtube.com/user/KTSPORTES" title="S&iacute;guenos en YouTube" target="_blank" style="display:inline-block; width:30px; height:30px; text-indent:-999em; text-align:left; border-radius:5px; background:url('{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/youtube.png') }}')">
                     </a>
                   </td>
                 </tr>
@@ -98,7 +98,7 @@
           <td style="margin:0cm 0cm 0cm 0cm; height:15pt">
             <p style="margin:0px; max-height:15pt">
               <span style="font-size:15.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
-                <img src="{{ spacer }}" border="0" width="240" height="18" alt="Espaciador">
+                <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/spacer.gif') }}" border="0" width="240" height="18" alt="Espaciador">
               </span>
             </p>
           </td>
@@ -114,7 +114,7 @@
           <td style="padding:0cm 0cm 0cm 0cm; height:2pt">
             <p style="margin:0px; max-height:2pt">
               <span style="font-size:2.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
-                <img src="{{ spacer }}" border="0" width="240" height="5" alt="Espaciador">
+                <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/spacer.gif') }}" border="0" width="240" height="5" alt="Espaciador">
               </span>
             </p>
           </td>
@@ -128,7 +128,7 @@
           <td style="padding:0cm 0cm 0cm 0cm; height:7.5pt">
             <p style="margin:0px; max-height:7.5pt">
               <span style="font-size:9.0pt; font-family:'Trebuchet MS','sans-serif'; color:#666666">
-                <img src="{{ spacer }}" border="0" width="240" height="10" alt="Espaciador">
+                <img src="{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ asset('bundles/syliusweb/images/newsletter/spacer.gif') }}" border="0" width="240" height="10" alt="Espaciador">
               </span>
             </p>
           </td>

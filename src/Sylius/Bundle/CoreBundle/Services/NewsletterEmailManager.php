@@ -69,12 +69,12 @@ class NewsletterEmailManager
 	    foreach ($destinatarios as $destinatario) {
 			$message = \Swift_Message::newInstance();
 
-	        $logo = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/logo.jpg'));
-	        $spacer = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/spacer.gif'));
-	        $facebook = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/facebook.png'));
-	        $linkedin = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/linkedin.png'));
-	        $twitter = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/twitter.png'));
-	        $youtube = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/youtube.png'));
+	        //$logo = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/logo.jpg'));
+	        //$spacer = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/spacer.gif'));
+	        //$facebook = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/facebook.png'));
+	        //$linkedin = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/linkedin.png'));
+	        //$twitter = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/twitter.png'));
+	        //$youtube = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/youtube.png'));
 
 			$message->setSubject($newsletter->getTitulo());
 
@@ -91,12 +91,12 @@ class NewsletterEmailManager
 		            $this->templating->render(
 		                'SyliusWebBundle:Backend/Newsletter/Template:newsletter.html.twig',
 		                array(
-		                	'logo' => $logo,
+		                	/*'logo' => $logo,
 		                	'spacer' => $spacer,
 		                	'facebook' => $facebook,
 		                	'linkedin' => $linkedin,
 		                	'twitter' => $twitter,
-		                	'youtube' => $youtube,
+		                	'youtube' => $youtube,*/
 		                	'titulo' => $newsletter->getTitulo(),
 		                	'contenido' => $newsletter->getContenido(),
 		                	'mes' => $newsletter->getMes(),
