@@ -17,7 +17,7 @@
 
 {{ form_errors(form) }}
 
-<form action="{{ path('sylius_backend_newsletter_create') }}" method="post" class="form-horizontal" novalidate>
+<form id="form" action="{{ path('sylius_backend_newsletter_create') }}" method="post" class="form-horizontal" novalidate>
     {% include 'SyliusWebBundle:Backend/Newsletter:_form.html.twig' %}
     {{ create() }}
 </form>
@@ -29,4 +29,5 @@
         var uri = "{{ app.request.scheme ~ '://' ~ app.request.httpHost ~ app.request.baseUrl ~ '/uploaded/' }}";
 	</script>
     {{ tinymce_init() }}
+    <script type="text/javascript" src="{{ asset('bundles/syliusweb/js/newsletter_validation.js') }}"></script>
 {% endblock %}

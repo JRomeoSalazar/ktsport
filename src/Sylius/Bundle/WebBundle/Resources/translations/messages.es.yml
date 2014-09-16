@@ -118,6 +118,8 @@ sylius:
         title: Nombre
         update_header: Editar barra
     breadcrumb:
+        actividad:
+            index: Actividades
         assortment: Varios
         bar:
             index: Barras
@@ -143,9 +145,9 @@ sylius:
             index: Inventario
         new: Nuevo
         newsletter:
-            index: Newsletter
+            index: Newsletters
         newsletter_user:
-            index: Usuario registrado de newsletter
+            index: Usuarios registrados de newsletter
         option:
             index: Opciones de producto
         order:
@@ -418,6 +420,7 @@ sylius:
     newest: Nuevos productos
     newsletter:
         0: Newsletter
+        actividades: Actividades
         contenido: Contenido
         create: Enviar nueva newsletter
         create_header: Crear y enviar nueva newsletter
@@ -448,6 +451,7 @@ sylius:
             message_name: Hola, %name% ¿Está seguro que desea darse de baja de nuestra newsletter?
         update_header: Editar newsletter
     newsletter_user:
+        actividad: Actividad
         create: Registrar usuario en la newsletter
         create_header: Registrar nuevos usuarios en la newsletter
         email: Correo electrónico
@@ -459,6 +463,16 @@ sylius:
         province: Provincia
         show_header: Detalles del usuario de la newsletter
         update_header: Editar usuario de la newsletter
+    actividad:
+        create: Crear nueva actividad
+        create_header: Crear nuevas actividades
+        id: ID
+        index_header: Actividades
+        manage: Gestionar actividades
+        name: Nombre
+        no_results: No hay actividades para mostrar.
+        show_header: Detalles de la actividad
+        update_header: Editar actividad
     no: No
     option:
         create: Crear opción

@@ -26,5 +26,15 @@
     <field name="titulo" type="string" column="titulo" />
     <field name="contenido" type="text" column="contenido" />
     <field name="enviarATodos" type="boolean" column="enviarATodos" />
+    <many-to-many field="actividades" inversed-by="newsletters" target-entity="Sylius\Bundle\CoreBundle\Model\Actividad">
+      <join-table name="sylius_newsletter_actividad">
+        <join-columns>
+          <join-column name="newsletter_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="actividad_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

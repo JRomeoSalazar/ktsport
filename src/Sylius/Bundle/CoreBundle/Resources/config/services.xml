@@ -58,6 +58,7 @@
         <parameter key="sylius.form.type.descuento.class">Sylius\Bundle\CoreBundle\Form\Type\DescuentoType</parameter>
         <parameter key="sylius.form.type.newsletter.class">Sylius\Bundle\CoreBundle\Form\Type\NewsletterType</parameter>
         <parameter key="sylius.form.type.newsletter_user.class">Sylius\Bundle\CoreBundle\Form\Type\NewsletterUserType</parameter>
+        <parameter key="sylius.form.type.actividad.class">Sylius\Bundle\CoreBundle\Form\Type\ActividadType</parameter>
         <parameter key="sylius.model.descuento.class">Sylius\Bundle\CoreBundle\Model\Descuento</parameter>
         <parameter key="sylius.form.type.user_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\UserFilterType</parameter>
         <parameter key="sylius.form.type.product_filter.class">Sylius\Bundle\CoreBundle\Form\Type\Filter\ProductFilterType</parameter>
@@ -348,9 +349,6 @@
             <argument>%sylius.model.descuento.class%</argument>
             <tag name="form.type" alias="sylius_descuento" />
         </service>
-        <service id="sylius.form.type.newsletter_user" class="%sylius.form.type.newsletter_user.class%">
-            <tag name="form.type" alias="sylius_newsletter_user" />
-        </service>
 
         <service id="sylius.listener.image_upload" class="%sylius.listener.image_upload.class%">
             <argument type="service" id="sylius.image_uploader" />
@@ -503,6 +501,12 @@
             <argument type="service" id="sylius.repository.newsletter_user" />
             <tag name="form.type" alias="sylius_newsletter" />
         </service>
+        <service id="sylius.form.type.newsletter_user" class="%sylius.form.type.newsletter_user.class%">
+            <tag name="form.type" alias="sylius_newsletter_user" />
+        </service>
+        <service id="sylius.form.type.actividad" class="%sylius.form.type.actividad.class%">
+            <tag name="form.type" alias="sylius_actividad" />
+        </service>
 
         <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
             <argument type="service" id="mailer" />
@@ -513,6 +517,7 @@
         <service id="sylius.listener.newsletter_send" class="%sylius.listener.newsletter_send.class%">
             <argument type="service" id="sylius.newsletter.email_manager" />
             <tag name="kernel.event_listener" event="sylius.newsletter.post_create" method="sendEmail" />
+            <tag name="kernel.event_listener" event="sylius.newsletter.post_update" method="sendEmail" />
         </service>
 
         <!-- Services -->

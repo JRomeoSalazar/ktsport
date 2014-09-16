@@ -1,47 +1,25 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Sylius\Bundle\AddressingBundle\Model;
+namespace Sylius\Bundle\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Bundle\CoreBundle\Model\NewsletterUser;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Default province model.
- *
- * @author Paweł Jędrzejewski <pjedrzejewski@sylius.pl>
+ * Actividad
  */
-class Province implements ProvinceInterface
+class Actividad
 {
     /**
-     * Province id.
-     *
-     * @var mixed
+     * @var integer
      */
-    protected $id;
+    private $id;
 
     /**
-     * Name.
-     *
-     * @var string
+     * @var string $name
      */
     protected $name;
-
-    /**
-     * Country.
-     *
-     * @var CountryInterface
-     */
-    protected $country;
 
     /**
      * @var Collection
@@ -62,13 +40,18 @@ class Province implements ProvinceInterface
         $this->newsletterUsers = new ArrayCollection();
     }
 
+    /**
+     * Model To String
+     */
     public function __toString()
     {
         return $this->name;
     }
 
     /**
-     * {@inheritdoc}
+     * Get id
+     *
+     * @return integer 
      */
     public function getId()
     {
@@ -76,7 +59,20 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Set the name.
+     *
+     * @param string $name
+     * @return NewsletterUser
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
      */
     public function getName()
     {
@@ -84,43 +80,10 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCountry(CountryInterface $country = null)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getNewsletters()
-    {
-        return $this->newsletters;
-    }
-
-    /**
-     * {@inheritdoc}
+     * Set newsletters.
+     *
+     * @param Collection $newsletters
+     * @return NewsletterUser
      */
     public function setNewsletters($newsletters)
     {
@@ -128,7 +91,19 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get newsletters.
+     *
+     * @return Collection
+     */
+    public function getNewsletters()
+    {
+        return $this->newsletters;
+    }
+
+    /**
+     * Get newsletterUsers.
+     *
+     * @return Collection
      */
     public function getNewsletterUsers()
     {
@@ -136,7 +111,9 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Checks if province has newsletterUser.
+     *
+     * @return Boolean
      */
     public function hasNewsletterUser(NewsletterUser $newsletterUser)
     {
@@ -144,7 +121,9 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Add newsletterUser.
+     *
+     * @param NewsletterUser $newsletterUser
      */
     public function addNewsletterUser(NewsletterUser $newsletterUser)
     {
@@ -155,7 +134,9 @@ class Province implements ProvinceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Remove newsletterUser.
+     *
+     * @param NewsletterUser $newsletterUser
      */
     public function removeNewsletterUser(NewsletterUser $newsletterUser)
     {

@@ -53,7 +53,15 @@ class NewsletterType extends AbstractType
                     'label' => 'sylius.form.newsletter.provinces',
                     'class' => 'Sylius\Bundle\AddressingBundle\Model\Province',
                     'expanded' => false,
-                    'multiple' => true
+                    'multiple' => true,
+                    'attr' => array('class' => 'provinces')
+                ))
+                ->add('actividades', 'entity', array(
+                    'label' => 'sylius.form.newsletter.actividades',
+                    'class' => 'Sylius\Bundle\CoreBundle\Model\Actividad',
+                    'expanded' => false,
+                    'multiple' => true,
+                    'attr' => array('class' => 'actividades')
                 ))
                 ->add('mes', 'choice', array(
                     'label' => 'sylius.form.newsletter.mes',

@@ -20,6 +20,12 @@ class NewsletterUserType extends AbstractType
                     'class' => 'Sylius\Bundle\AddressingBundle\Model\Province',
                     'expanded' => false,
                     'multiple' => false
+                ))
+                ->add('actividad', 'entity', array(
+                    'label' => 'sylius.form.newsletter_user.actividad',
+                    'class' => 'Sylius\Bundle\CoreBundle\Model\Actividad',
+                    'expanded' => false,
+                    'multiple' => false
                 ));
     }
     

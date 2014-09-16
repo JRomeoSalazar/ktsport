@@ -32,6 +32,7 @@ sylius:
         image:
             file: Imagen
         newsletter:
+            actividades: Actividades
             contenido: Contenido
             emisor: Email del emisor
             enviarATodos: Enviar a todos
@@ -40,9 +41,12 @@ sylius:
             provinces: Provincias
             titulo: Título
         newsletter_user:
+            actividad: Actividad
             email: Email
             name: Nombre
             province: Provincia
+        actividad:
+            name: Nombre
         order:
             comentario: Comentarios:
         order_filter:

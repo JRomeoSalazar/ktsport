@@ -149,6 +149,11 @@ sylius_resource:
             driver: doctrine/orm
             classes:
                 model: Sylius\Bundle\CoreBundle\Model\NewsletterUser
+                repository: Sylius\Bundle\CoreBundle\Repository\NewsletterUserRepository
+        sylius.actividad:
+            driver: doctrine/orm
+            classes:
+                model: Sylius\Bundle\CoreBundle\Model\Actividad
         ktsport.bar:
             driver: doctrine/orm
             classes:

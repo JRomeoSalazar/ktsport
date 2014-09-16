@@ -175,6 +175,14 @@
         </property>
     </class>
 
+    <class name="Sylius\Bundle\CoreBundle\Model\Actividad">
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">sylius.actividad.name.not_blank</option>
+            </constraint>
+        </property>
+    </class>
+
     <class name="Sylius\Bundle\CoreBundle\Model\Newsletter">
         <property name="emisor">
             <constraint name="NotBlank">
@@ -182,11 +190,6 @@
             </constraint>
             <constraint name="Email">
                 <option name="message">sylius.newsletter.emisor.email</option>
-            </constraint>
-        </property>
-        <property name="provinces">
-            <constraint name="NotBlank">
-                <option name="message">sylius.newsletter.provinces.not_blank</option>
             </constraint>
         </property>
         <property name="titulo">

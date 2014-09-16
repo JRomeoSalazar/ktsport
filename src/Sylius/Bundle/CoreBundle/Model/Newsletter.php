@@ -57,6 +57,11 @@ class Newsletter
     protected $enviarATodos;
 
     /**
+     * @var Collection
+     */
+    protected $actividades;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -64,6 +69,7 @@ class Newsletter
         $this->fecha = new \DateTime();
         $this->mes = date('n');
         $this->provinces = new ArrayCollection();
+        $this->actividades = new ArrayCollection();
         $this->enviarATodos = false;
     }
 
@@ -243,5 +249,26 @@ class Newsletter
     public function getEnviarATodos()
     {
         return $this->enviarATodos;
+    }
+
+    /**
+     * Set actividades.
+     *
+     * @param Collection $actividades
+     * @return Newsletter
+     */
+    public function setActividades($actividades)
+    {
+        $this->actividades = $actividades;
+    }
+
+    /**
+     * Get actividades.
+     *
+     * @return Collection
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
     }
 }

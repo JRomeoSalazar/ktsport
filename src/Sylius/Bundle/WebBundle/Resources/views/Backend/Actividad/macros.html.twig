@@ -1,0 +1,38 @@
+{% macro list(actividads) %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusWebBundle:Backend/Macros:alerts.html.twig' as alerts %}
+
+{% if actividads|length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{ sylius_resource_sort('id', '#id') }}</th>
+            <th>{{ sylius_resource_sort('name', 'sylius.actividad.name'|trans) }}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for actividad in actividads %}
+        <tr id="{{ actividad.id }}">
+            <td class="id">
+                {{ actividad.id }}
+            </td>
+            <td>
+                <a href="{{ path('sylius_backend_actividad_show', {'id': actividad.id}) }}">{{ actividad.name }}</a>
+            </td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.edit(path('sylius_backend_actividad_update', {'id': actividad.id})) }}
+                    {{ buttons.delete(path('sylius_backend_actividad_delete', {'id': actividad.id})) }}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+{{ alerts.info('sylius.actividad.no_results'|trans) }}
+{% endif %}
+
+{% endmacro %}

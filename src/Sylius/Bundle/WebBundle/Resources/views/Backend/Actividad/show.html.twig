@@ -1,0 +1,31 @@
+{% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
+
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+
+{% block topbar %}
+<ol class="breadcrumb">
+    <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
+    <li><a href="{{ path('sylius_backend_actividad_index') }}">{{ 'sylius.breadcrumb.actividad.index'|trans }}</a></li>
+    <li>{{ actividad.name }}</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="actions-menu">
+        {{ buttons.manage(path('sylius_backend_actividad_index'), 'sylius.actividad.manage'|trans) }}
+        {{ buttons.edit(path('sylius_backend_actividad_update', {'id': actividad.id})) }}
+        {{ buttons.delete(path('sylius_backend_actividad_delete', {'id': actividad.id}), null, false, false) }}
+    </div>
+    <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.actividad.show_header'|trans|raw }}</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan="2">#{{ actividad.id }} {{ actividad.name }}</th>
+        </tr>
+        </tr>
+    </thead>
+</table>
+{% endblock %}

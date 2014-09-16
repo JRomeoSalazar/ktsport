@@ -31,6 +31,11 @@ class NewsletterUser
     protected $province;
 
     /**
+     * @var integer $province
+     */
+    protected $actividad;
+
+    /**
      * String to be displayed
      */
     public function __toString()
@@ -109,5 +114,25 @@ class NewsletterUser
     public function getProvince()
     {
         return $this->province;
+    }
+
+    /**
+     * Set the actividad.
+     *
+     * @param Actividad $actividad
+     */
+    public function setActividad(Actividad $actividad = null)
+    {
+        $this->actividad = $actividad;
+    }
+
+    /**
+     * Get actividad.
+     *
+     * @return Actividad
+     */
+    public function getActividad()
+    {
+        return $this->actividad;
     }
 }

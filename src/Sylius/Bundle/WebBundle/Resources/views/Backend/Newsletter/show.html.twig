@@ -15,7 +15,7 @@
 <div class="page-header">
     <div class="actions-menu">
         {{ buttons.manage(path('sylius_backend_newsletter_index'), 'sylius.newsletter.manage'|trans) }}
-        {# buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) #}
+        {{ buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) }}
         {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id}), null, false, false) }}
     </div>
     <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.newsletter.show_header'|trans|raw }}</h1>
@@ -43,6 +43,16 @@
                 <ul>
                     {% for province in newsletter.provinces %}
                     <li>{{ province }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{{ 'sylius.newsletter.actividades'|trans }}</strong></td>
+            <td>
+                <ul>
+                    {% for actividad in newsletter.actividades %}
+                    <li>{{ actividad }}</li>
                     {% endfor %}
                 </ul>
             </td>

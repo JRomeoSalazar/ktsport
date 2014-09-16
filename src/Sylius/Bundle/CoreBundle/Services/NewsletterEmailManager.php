@@ -54,27 +54,34 @@ class NewsletterEmailManager
 	 */
 	public function sendEmail($newsletter)
 	{
+		// Si elegimos la opción 'Enviar a todos'
 		if ($newsletter->getEnviarATodos()) {
 			$destinatarios = $this->repository->findAll();
 		}
+
+		// Si enviamos el correo por provincias o actividades
 		else {
-			$destinatarios = array();
+			$provinces = array();
 			foreach ($newsletter->getProvinces() as $province) {
-				foreach ($province->getNewsletterUsers() as $newsletterUser) {
-					$destinatarios[] = $newsletterUser;
-				}
+				$provinces[] = $province->getId();
 			}
+
+			$actividades = array();
+			foreach ($newsletter->getActividades() as $actividad) {
+				$actividades[] = $actividad->getId();
+			}
+			
+			$criteria = array(
+				'provinces' => $provinces,
+				'actividades' => $actividades
+			);
+
+			$destinatarios = $this->repository->filterByCriteria($criteria);
 		}
 
+		// Una vez tenemos los destinatarios
 	    foreach ($destinatarios as $destinatario) {
 			$message = \Swift_Message::newInstance();
-
-	        //$logo = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/logo.jpg'));
-	        //$spacer = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/spacer.gif'));
-	        //$facebook = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/facebook.png'));
-	        //$linkedin = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/linkedin.png'));
-	        //$twitter = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/twitter.png'));
-	        //$youtube = $message->embed(\Swift_Image::fromPath('bundles/syliusweb/images/newsletter/youtube.png'));
 
 			$message->setSubject($newsletter->getTitulo());
 
@@ -91,12 +98,6 @@ class NewsletterEmailManager
 		            $this->templating->render(
 		                'SyliusWebBundle:Backend/Newsletter/Template:newsletter.html.twig',
 		                array(
-		                	/*'logo' => $logo,
-		                	'spacer' => $spacer,
-		                	'facebook' => $facebook,
-		                	'linkedin' => $linkedin,
-		                	'twitter' => $twitter,
-		                	'youtube' => $youtube,*/
 		                	'titulo' => $newsletter->getTitulo(),
 		                	'contenido' => $newsletter->getContenido(),
 		                	'mes' => $newsletter->getMes(),

@@ -31,7 +31,7 @@
             </td>
             <td>
                 <div class="pull-right">
-                    {# buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) #}
+                    {{ buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) }}
                     {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id})) }}
                 </div>
             </td>

@@ -11,6 +11,7 @@
             <th>{{ sylius_resource_sort('email', 'sylius.newsletter_user.email'|trans) }}</th>
             <th>{{ sylius_resource_sort('name', 'sylius.newsletter_user.name'|trans) }}</th>
             <th>{{ sylius_resource_sort('province', 'sylius.newsletter_user.province'|trans) }}</th>
+            <th>{{ sylius_resource_sort('actividad', 'sylius.newsletter_user.actividad'|trans) }}</th>
             <th></th>
         </tr>
     </thead>
@@ -28,6 +29,9 @@
             </td>
             <td>
                 {{ newsletter_user.province }}
+            </td>
+            <td>
+                {{ newsletter_user.actividad }}
             </td>
             <td>
                 <div class="pull-right">

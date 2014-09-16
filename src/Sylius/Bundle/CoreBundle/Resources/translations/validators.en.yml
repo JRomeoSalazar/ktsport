@@ -11,6 +11,10 @@ sylius:
         code:
             not_blank: Please enter locale code.
             unique: This locale already exists.
+    newsletter_user:
+        email:
+            email: You must enter a valid email.
+            not_blank: Please enter your email.
     user:
         disclaimer:
             is_true: You must accept Disclaimer
