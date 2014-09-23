@@ -45,6 +45,7 @@
         <parameter key="sylius.listener.coupon_usage.class">Sylius\Bundle\CoreBundle\EventListener\CouponUsageListener</parameter>
         <parameter key="sylius.listener.order_user.class">Sylius\Bundle\CoreBundle\EventListener\OrderUserListener</parameter>
         <parameter key="sylius.listener.newsletter_send.class">Sylius\Bundle\CoreBundle\EventListener\NewsletterSendListener</parameter>
+        <parameter key="sylius.listener.newsletter_user_confirm.class">Sylius\Bundle\CoreBundle\EventListener\NewsletterUserConfirmListener</parameter>
         <parameter key="sylius.newsletter.email_manager.class">Sylius\Bundle\CoreBundle\Services\NewsletterEmailManager</parameter>
 
         <parameter key="sylius.checkout_form.addressing.class">Sylius\Bundle\CoreBundle\Form\Type\Checkout\AddressingStepType</parameter>
@@ -508,16 +509,21 @@
             <tag name="form.type" alias="sylius_actividad" />
         </service>
 
-        <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
-            <argument type="service" id="mailer" />
-            <argument type="service" id="templating" />
-            <argument type="service" id="sylius.repository.newsletter_user" />
-        </service>
-
         <service id="sylius.listener.newsletter_send" class="%sylius.listener.newsletter_send.class%">
             <argument type="service" id="sylius.newsletter.email_manager" />
             <tag name="kernel.event_listener" event="sylius.newsletter.post_create" method="sendEmail" />
             <tag name="kernel.event_listener" event="sylius.newsletter.post_update" method="sendEmail" />
+        </service>
+
+        <service id="sylius.listener.newsletter_user_confirm" class="%sylius.listener.newsletter_user_confirm.class%">
+            <argument type="service" id="sylius.newsletter.email_manager" />
+            <tag name="kernel.event_listener" event="sylius.newsletter_user.post_create" method="confirmEmail" />
+        </service>
+
+        <service id="sylius.newsletter.email_manager" class="%sylius.newsletter.email_manager.class%">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="sylius.repository.newsletter_user" />
         </service>
 
         <!-- Services -->

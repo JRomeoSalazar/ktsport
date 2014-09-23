@@ -11,7 +11,7 @@
 
 namespace Sylius\Bundle\CoreBundle\EventListener;
 
-use Sylius\Bundle\CoreBundle\Model\Newsletter;
+use Sylius\Bundle\CoreBundle\Model\NewsletterUser;
 use Sylius\Bundle\CoreBundle\Services\NewsletterEmailManager;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
@@ -20,7 +20,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
  *
  * @author Jorge Romeo <jromeosalazar@gmail.com>
  */
-class NewsletterSendListener
+class NewsletterUserConfirmListener
 {
     /**
      * Newsletter Email Manager.
@@ -40,22 +40,22 @@ class NewsletterSendListener
     }
 
     /**
-     * Recive la newsletter y envía el correo electrónico.
+     * Recive el usuario de newsletter y envía el correo de confirmación de registro.
      *
      * @param GenericEvent $event
      *
      * @throws \InvalidArgumentException
      */
-    public function sendEmail(GenericEvent $event)
+    public function confirmEmail(GenericEvent $event)
     {
-        $newsletter = $event->getSubject();
+        $newsletterUser = $event->getSubject();
 
-        if (!$newsletter instanceof Newsletter) {
+        if (!$newsletterUser instanceof NewsletterUser) {
             throw new \InvalidArgumentException(
-                'Newsletter send listener requires event subject to be instance of "Sylius\Bundle\CoreBundle\Model\Newsletter".'
+                'Newsletter confirm listener requires event subject to be instance of "Sylius\Bundle\CoreBundle\Model\NewsletterUser".'
             );
         }
 
-        $this->emailManager->sendEmail($newsletter);
+        $this->emailManager->confirmEmail($newsletterUser);
     }
 }
