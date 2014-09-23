@@ -1,13 +1,11 @@
 {% extends 'SyliusWebBundle:Backend:layout.html.twig' %}
 
-{% from 'SyliusResourceBundle:Macros:actions.html.twig' import update %}
-
 {% block topbar %}
 <ol class="breadcrumb">
     <li>{{ 'sylius.breadcrumb.configuration'|trans }}</li>
     <li><a href="{{ path('sylius_backend_newsletter_index') }}">{{ 'sylius.breadcrumb.newsletter.index'|trans }}</a></li>
     <li><a href="{{ path('sylius_backend_newsletter_show', {'id': newsletter.id}) }}">{{ newsletter.titulo }}</a></li>
-    <li>{{ 'sylius.breadcrumb.edit'|trans }}</li>
+    <li>{{ 'sylius.newsletter.reutilizar'|trans }}</li>
 </ol>
 {% endblock %}
 
@@ -22,7 +20,13 @@
 <form id="form" action="{{ path('sylius_backend_newsletter_update', {'id': newsletter.id}) }}" method="post" class="form-horizontal" novalidate>
     <input type="hidden" name="_method" value="PUT">
     {% include 'SyliusWebBundle:Backend/Newsletter:_form.html.twig' %}
-    {{ update() }}
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary btn-lg"><i class="icon-save"></i> {{ 'sylius.newsletter.send'|trans }}</button>
+    {% set url = path('sylius_backend_newsletter_update', {'id': newsletter.id}) %}
+    <a href="{{ app.request.headers.get('referer', url) }}" class="btn btn-danger btn-lg"><i class="icon-remove"></i> {{ 'sylius.cancel'|trans }}</a>
+</div>
+
 </form>
 {% endblock %}
 

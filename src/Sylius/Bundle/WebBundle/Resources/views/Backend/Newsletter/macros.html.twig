@@ -31,7 +31,9 @@
             </td>
             <td>
                 <div class="pull-right">
-                    {{ buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) }}
+                    <a href="{{ path('sylius_backend_newsletter_update', {'id': newsletter.id}) }}" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-pencil"></i><span>{{ 'sylius.newsletter.reutilizar'|trans }}</span>
+                    </a>
                     {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id})) }}
                 </div>
             </td>

@@ -433,10 +433,12 @@ sylius:
         mes: Mes
         no_results: No hay newsletters para mostrar.
         nombre_emisor: Nombre del emisor
+        reutilizar: Reutilizar
         register:
             0: Alta Newsletter
             back: Volver
             success: Alta de newsletter realizada correctamente.
+        send: Enviar newsletter
         show_header: Detalles de la newsletter
         titulo: Título
         unsubscribe:
@@ -449,7 +451,7 @@ sylius:
                 message: Su baja de la newsletter ha sido tramitada.
             message: ¿Está seguro que desea darse de baja de nuestra newsletter?
             message_name: Hola, %name% ¿Está seguro que desea darse de baja de nuestra newsletter?
-        update_header: Editar newsletter
+        update_header: Reutilizar newsletter
     newsletter_user:
         actividad: Actividad
         create: Registrar usuario en la newsletter

@@ -15,7 +15,9 @@
 <div class="page-header">
     <div class="actions-menu">
         {{ buttons.manage(path('sylius_backend_newsletter_index'), 'sylius.newsletter.manage'|trans) }}
-        {{ buttons.edit(path('sylius_backend_newsletter_update', {'id': newsletter.id})) }}
+        <a href="{{ path('sylius_backend_newsletter_update', {'id': newsletter.id}) }}" class="btn btn-primary">
+            <i class="glyphicon glyphicon-pencil"></i><span>{{ 'sylius.newsletter.reutilizar'|trans }}</span>
+        </a>
         {{ buttons.delete(path('sylius_backend_newsletter_delete', {'id': newsletter.id}), null, false, false) }}
     </div>
     <h1><i class="glyphicon glyphicon-flag"></i> {{ 'sylius.newsletter.show_header'|trans|raw }}</h1>
