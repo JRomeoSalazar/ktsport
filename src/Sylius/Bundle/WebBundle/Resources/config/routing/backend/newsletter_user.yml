@@ -8,6 +8,8 @@ sylius_backend_newsletter_user_index:
         _controller: sylius.controller.newsletter_user:indexAction
         _sylius:
             template: SyliusWebBundle:Backend/NewsletterUser:index.html.twig
+            method: createPaginator
+            arguments: [$criteria, $sorting]
 
 sylius_backend_newsletter_user_create:
     pattern: /new
