@@ -48,4 +48,52 @@ class NewsletterUserRepository extends EntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * Create filter paginator.
+     *
+     * @param array $criteria
+     * @param array $sorting
+     *
+     * @return PagerfantaInterface
+     */
+    public function createFilterPaginator($criteria = array(), $sorting = array())
+    {
+        $queryBuilder = parent::getCollectionQueryBuilder()
+            ->select('newsletterUser')
+        ;
+
+        if (!empty($criteria['name'])) {
+            $queryBuilder
+                ->andWhere('newsletterUser.name LIKE :name')
+                ->setParameter('name', '%'.$criteria['name'].'%')
+            ;
+        }
+
+        if (!empty($criteria['email'])) {
+            $queryBuilder
+                ->andWhere('newsletterUser.email LIKE :email')
+                ->setParameter('email', '%'.$criteria['email'].'%')
+            ;
+        }
+
+        if (empty($sorting)) {
+            if (!is_array($sorting)) {
+                $sorting = array();
+            }
+            $sorting['id'] = 'desc';
+        }
+
+        $this->applySorting($queryBuilder, $sorting);
+
+        return $this->getPaginator($queryBuilder);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAlias()
+    {
+        return 'newsletterUser';
+    }
 }

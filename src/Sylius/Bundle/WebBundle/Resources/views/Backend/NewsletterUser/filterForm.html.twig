@@ -1,0 +1,8 @@
+{% form_theme form 'SyliusWebBundle:Backend:filterForms.html.twig' %}
+
+<form method="get" action="{{ path('sylius_backend_newsletter_user_index') }}" class="form-inline form-filter">
+{{ form_row(form.name) }}
+{{ form_row(form.email) }}
+<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-filter"></i> {{ 'sylius.filter'|trans }}</button>
+<a href="{{ path('sylius_backend_newsletter_user_index') }}" title="Cancelar filtro" id="remove-filter" class="btn btn-default" style="display:none"><i class="glyphicon glyphicon-remove"></i></a>
+</form>

@@ -11,7 +11,7 @@
 
     $(document).ready(function() {
         $('form').bind('submit', function() {
-            $(this).find('button[type="submit"].btn-primary i').attr('class', 'icon-spinner icon-spin');
+            $(this).find('button[type="submit"].btn-primary i').attr('class', 'glyphicon glyphicon-refresh spin');
         });
    });
 })( jQuery );

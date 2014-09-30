@@ -11,6 +11,7 @@
 </ol>
 {% endblock %}
 
+
 {% block content %}
 <div class="page-header">
     <div class="actions-menu">
@@ -20,8 +21,22 @@
     <h1><i class="glyphicon glyphicon-folder-close"></i> {{ 'sylius.newsletter_user.index_header'|trans|raw }}</h1>
 </div>
 
+{% render(controller('sylius.controller.backend.form:filterAction', {'type': 'sylius_newsletter_user_filter', 'template': 'SyliusWebBundle:Backend/NewsletterUser:filterForm.html.twig'})) %}
+
 {{ pagination(newsletter_users) }}
 {{ list(newsletter_users) }}
 {{ pagination(newsletter_users) }}
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+	{% if app.request.get('criteria') is not null %}
+		{% set criteria = true %}
+	{% else %}
+		{% set criteria = false %}
+	{% endif %}
+	<script type="text/javascript">
+        var $criteria = "{{ criteria }}";
+	</script>
+    <script type="text/javascript" src="{{ asset('bundles/syliusweb/js/remove-filter.js') }}"></script>
 {% endblock %}

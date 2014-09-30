@@ -10,10 +10,6 @@
     'use strict';
 
     $(document).ready(function() {
-        $('.variant-table-toggle i.glyphicon').on('click', function(e) {
-            $(this).toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-            $(this).parent().parent().find('table tbody').toggle();
-        });
-        $('.datepicker').datepicker({});
+        if ($criteria) $('a#remove-filter').show();
     });
 })( jQuery );
